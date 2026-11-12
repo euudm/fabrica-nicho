@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- SEO-ESTATICO -->
+<title>[NOME] | Chaveiro 24h em [CIDADE]</title>
+<!-- /SEO-ESTATICO -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script>
+/* ESTILO A: "Comércio de bairro". Celular primeiro (ver MOBILE.md). Todo o conteúdo sai do CONFIG. */
+const CONFIG = /*CONFIG-INICIO*/{
+  estilo: "a",
+  nome: "[NOME]",
+  complemento: "Chaveiro",
+  nicho: "Chaveiro 24 horas",
+  whatsapp: "[WHATSAPP]",
+  telefone: "[WHATSAPP]",
+  cidade: "[CIDADE]",
+  uf: "SP",
+  endereco: "[ENDERECO]",
+  pontoReferencia: "[PONTO_DE_REFERENCIA]",
+  mapsEmbed: "",
+  cor: "#F5C400",
+  corTexto: "#111111",
+  fundo: "#F6F1E7",
+  mensagemWhatsApp: "Olá, vi o site da {nome} e preciso de um chaveiro.",
+  faixa: "Aberto 24 horas, também domingo e feriado",
+  menu: [["#servicos", "Serviços e preços"], ["#quem", "Quem atende"], ["#onde", "Onde eu atendo"], ["#duvidas", "Perguntas"]],
+
+  seo: {
+    title: "[NOME] | Chaveiro 24h em [CIDADE]",
+    description: "Chaveiro 24 horas em [CIDADE]. Abertura de porta e carro, cópia de chave, troca de fechadura e chave codificada. Loja na [ENDERECO].",
+    ogImage: "https://images.unsplash.com/photo-1575908539614-ff89490f4a78?w=1200&q=80"
+  },
+
+  hero: {
+    titulo: "Chaveiro 24h em [CIDADE]. Chego em [TEMPO_CHEGADA] minutos.",
+    apoio: "Abro porta de casa e de carro sem quebrar a fechadura.",
+    botaoWhats: "Chamar no WhatsApp",
+    botaoLigar: "Ligar",
+    imagem: "https://images.unsplash.com/photo-1575908539614-ff89490f4a78?w=1400&q=80",
+    loja: "Loja na [ENDERECO], perto de [PONTO_DE_REFERENCIA]. De madrugada eu vou até você."
+  },
+
+  servicos: {
+    titulo: "Serviços e preços",
+    texto: "O valor eu passo pelo telefone antes de sair. Das 22h às 6h tem acréscimo de [ACRESCIMO_NOTURNO].",
+    itens: [
+      ["Abertura de porta", "Casa e apartamento, na maioria das vezes sem trocar nada.", "a partir de [PRECO_ABERTURA]"],
+      ["Abertura de carro", "Porta e porta-malas com a chave esquecida dentro.", "a partir de [PRECO_ABERTURA_CARRO]"],
+      ["Cópia de chave", "Simples, tetra e gorja, feita na hora aqui na loja.", "a partir de [PRECO_COPIA]"],
+      ["Troca de fechadura", "Mudou de casa ou perdeu a chave: troco o miolo no mesmo dia.", "a partir de [PRECO_FECHADURA]"],
+      ["Chave codificada", "Chave de carro com chip, feita onde o carro está, sem guincho.", "a partir de [PRECO_CODIFICADA]"],
+      ["Fechadura digital", "Senha e biometria em porta de madeira ou alumínio.", "a partir de [PRECO_DIGITAL]"],
+      ["Cofre", "Abertura, troca de segredo e conserto.", "sob consulta"],
+      ["Empresas e condomínios", "Chave mestra, controle de cópias e atendimento por contrato.", "sob consulta"]
+    ],
+    marcas: "Trabalho com fechaduras Papaiz, Pado, Stam, Soprano e Yale.",
+    pagamento: "Pix, dinheiro, débito e crédito."
+  },
+
+  responsavel: {
+    titulo: "Quem atende",
+    nome: "[NOME_RESPONSAVEL]",
+    texto: "Sou chaveiro há [ANOS_DE_MERCADO] anos aqui em [CIDADE]. Quem atende o telefone de madrugada sou eu, e quem vai até você também. Antes de abrir qualquer porta eu peço um comprovante de endereço ou o documento do carro. É chato, mas é o que protege a sua casa.",
+    foto: "",
+    legendaFoto: "Você na frente da loja ou com a maleta de ferramentas"
+  },
+
+  trabalhos: {
+    titulo: "Serviços da semana",
+    fotos: [
+      { img: "", legenda: "Troca de miolo em porta de apartamento" },
+      { img: "", legenda: "Fechadura digital instalada" },
+      { img: "", legenda: "Chave codificada feita na rua" },
+      { img: "", legenda: "Balcão de cópias da loja" }
+    ]
+  },
+
+  atendimento: {
+    titulo: "Onde eu atendo",
+    texto: "Atendo [CIDADE] e os bairros [BAIRROS_ATENDIDOS]. Se for mais longe, liga que eu falo se consigo chegar e quanto fica.",
+    horario: [["Loja", "Seg a sáb, 8h às 18h"], ["Na rua", "24 horas, todo dia"]]
+  },
+
+  duvidas: {
+    titulo: "Perguntas de quem liga",
+    itens: [
+      { p: "Vai quebrar minha porta?", r: "Na maioria das vezes não. Se a fechadura estiver travada por dentro e não tiver outro jeito, eu explico antes e você decide." },
+      { p: "Quanto fica de madrugada?", r: "O preço da tabela mais [ACRESCIMO_NOTURNO]. Falo o valor fechado no telefone, antes de sair." },
+      { p: "Faz chave de qualquer carro?", r: "Faço da maioria das marcas. Manda o modelo e o ano no WhatsApp que eu confirmo na hora." },
+      { p: "Por que pede documento?", r: "Pra não abrir a casa de ninguém pra quem não mora lá. Serve conta de luz, comprovante de endereço ou documento com foto e o endereço." }
+    ]
+  },
+
+  final: "Trancado do lado de fora? Liga agora.",
+  rodape: "[NOME], chaveiro em [CIDADE]. [ENDERECO]. CNPJ [CNPJ]."
+}/*CONFIG-FIM*/;
+</script>
+
+<style>
+:root{--cor:#F5C400;--cor-txt:#111;--fundo:#F6F1E7;--tinta:#111;--cinza:#524E47;--linha:#11111122;--ph:#D8D2C5;
+  --poster:"Archivo Black",Impact,sans-serif;--txt:"Archivo",system-ui,sans-serif;--wrap:1140px;
+  --barra:calc(76px + env(safe-area-inset-bottom))}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px;overflow-x:clip}
+body{font-family:var(--txt);background:var(--fundo);color:var(--tinta);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:var(--barra)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+h1,h2{overflow-wrap:break-word;font-family:var(--poster);font-weight:400;letter-spacing:-.01em;line-height:1.02}
+h2{font-size:30px;margin-bottom:12px}
+section{padding:52px 0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 20px;border-radius:3px;font-weight:700;font-size:1.02rem;text-decoration:none;border:3px solid var(--tinta);transition:transform .1s;-webkit-tap-highlight-color:transparent}
+.btn:active,.barra a:active,.serv:active{transform:scale(.97)}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-preto{background:var(--tinta);color:var(--fundo)}
+.btn-cor{background:var(--cor);color:var(--cor-txt)}
+
+/* faixa + header fino fixo que encolhe */
+.faixa{background:var(--cor);color:var(--cor-txt);font-weight:700;text-align:center;padding:8px 20px;font-size:.92rem;border-bottom:3px solid var(--tinta)}
+.hdr{position:sticky;top:0;z-index:40;background:var(--fundo);border-bottom:1px solid var(--linha)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px;transition:height .2s}
+.hdr.mini .wrap{height:52px}
+.logo{font-family:var(--poster);font-size:1.3rem;text-decoration:none;line-height:1;min-height:48px;display:flex;flex-direction:column;justify-content:center}
+.logo span{display:block;font-family:var(--txt);font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza);margin-top:3px}
+.hdr .lado{display:flex;align-items:center;gap:8px}
+.tel-top{display:none;font-family:var(--poster);font-size:1.3rem;text-decoration:none}
+.menu-desk{display:none;gap:22px;font-weight:700;font-size:.95rem}
+.menu-desk a{text-decoration:none}
+.hdr .btn{display:none}
+.btn-menu{width:48px;height:48px;display:grid;place-items:center;margin-right:-10px}
+.btn-menu svg{width:26px;height:26px}
+
+/* painel do menu */
+.veu{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--fundo);border-top:3px solid var(--tinta);padding:6px 20px calc(20px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s}
+.menu-aberto .veu{opacity:1;pointer-events:auto}
+.menu-aberto .sheet{transform:none}
+.sheet .topo{display:flex;justify-content:space-between;align-items:center;min-height:56px;font-weight:700;color:var(--cinza)}
+.sheet .topo button{width:48px;height:48px;font-size:30px;margin-right:-10px}
+.sheet nav a{display:flex;align-items:center;min-height:58px;border-top:1px solid var(--linha);font-family:var(--poster);font-size:1.35rem;text-decoration:none}
+
+/* hero */
+.hero{padding:20px 0 0}
+.hero h1{font-size:38px;margin-bottom:12px}
+.hero .apoio{font-size:1.08rem;max-width:40ch;margin-bottom:18px}
+.hero .acoes{display:none}
+.hero-foto{margin:0 -20px;aspect-ratio:16/10;overflow:hidden;background:var(--ph);border-top:3px solid var(--tinta);border-bottom:3px solid var(--tinta)}
+.hero-foto img{width:100%;height:100%;object-fit:cover}
+.loja{margin-top:16px;font-weight:600}
+.loja a{text-underline-offset:3px}
+
+/* placeholder */
+.ph{background:var(--ph);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:16px;color:#615B50;width:100%;height:100%}
+.ph b{font-family:var(--poster);font-weight:400;font-size:1rem;letter-spacing:.04em}
+.ph span{font-size:.9rem}
+
+/* carrossel */
+.trilho{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 6px;scroll-padding:0 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>*{flex:0 0 82%;scroll-snap-align:start}
+.dica{font-size:.92rem;color:var(--cinza);margin-top:10px}
+
+/* serviços: cards de preço */
+.serv-txt{max-width:60ch;margin-bottom:20px;color:var(--cinza)}
+.serv{background:#fff;border:3px solid var(--tinta);padding:20px 18px;display:flex;flex-direction:column;gap:8px;min-height:190px;transition:transform .1s}
+.serv b{font-family:var(--poster);font-weight:400;font-size:1.3rem;line-height:1.1}
+.serv span{color:var(--cinza);flex:1}
+.serv em{font-style:normal;font-weight:700;font-size:1.05rem;background:var(--cor);color:var(--cor-txt);align-self:flex-start;padding:4px 8px}
+.serv-rod{margin-top:18px;display:grid;gap:6px;font-weight:600}
+
+/* quem atende */
+.quem{background:var(--cor);color:var(--cor-txt);border-top:3px solid var(--tinta);border-bottom:3px solid var(--tinta)}
+.quem-grid{display:grid;gap:22px}
+.quem .foto{aspect-ratio:1/1;border:3px solid var(--tinta);max-width:420px;overflow:hidden}
+.quem h3{font-family:var(--poster);font-weight:400;font-size:1.6rem;margin:2px 0 10px}
+.quem p{font-size:1.06rem;max-width:52ch}
+.quem .ph{background:#00000014;color:inherit}
+.trab-tit{font-family:var(--poster);font-weight:400;font-size:1.3rem;margin:40px 0 12px}
+.trab figure{aspect-ratio:4/5;border:3px solid var(--tinta);cursor:zoom-in;background:var(--ph);overflow:hidden}
+.trab img{width:100%;height:100%;object-fit:cover}
+.quem .dica{color:inherit;opacity:.8}
+
+/* onde */
+.onde{display:grid;gap:22px}
+.onde p{font-size:1.06rem;max-width:52ch}
+.end{display:inline-flex;align-items:center;min-height:48px;font-weight:700;padding:8px 0;text-underline-offset:3px}
+.horas{margin-top:14px;border-top:3px solid var(--tinta)}
+.horas div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linha);font-weight:600}
+.mapa{border:3px solid var(--tinta);height:260px}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+
+/* dúvidas: acordeão */
+.duv{border-top:3px solid var(--tinta)}
+.duv details{border-bottom:1px solid var(--linha)}
+.duv summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;font-weight:700;font-size:1.06rem;-webkit-tap-highlight-color:transparent}
+.duv summary::-webkit-details-marker{display:none}
+.duv summary::after{content:"+";font-family:var(--poster);font-size:1.4rem;flex:none;width:24px;text-align:center}
+.duv details[open] summary::after{content:"−"}
+.duv p{color:var(--cinza);padding:0 0 16px;max-width:70ch}
+
+/* final */
+.final{background:var(--tinta);color:var(--fundo);text-align:center;padding:52px 0}
+.final h2{color:var(--fundo)}
+.final .big{display:inline-flex;align-items:center;min-height:56px;font-family:var(--poster);font-size:clamp(2rem,10vw,4.4rem);color:var(--cor);text-decoration:none;margin:6px 0 4px}
+
+footer{padding:24px 0;font-size:.95rem;color:var(--cinza)}
+
+/* tela cheia */
+.lb{position:fixed;inset:0;z-index:70;background:rgba(10,10,10,.94);display:none;align-items:center;justify-content:center;padding:64px 16px calc(24px + env(safe-area-inset-bottom));touch-action:none}
+.lb.on{display:flex}
+.lb .conteudo{width:100%;max-width:900px;max-height:100%;aspect-ratio:4/5;transition:transform .2s,opacity .2s}
+.lb .conteudo img{width:100%;height:100%;object-fit:contain}
+.lb .x{position:absolute;top:calc(8px + env(safe-area-inset-top));right:8px;width:48px;height:48px;color:#fff;font-size:34px;line-height:1}
+.lb .leg{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));text-align:center;color:#ddd;font-size:.95rem;padding:0 20px}
+
+/* barra fixa de contato */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 20px calc(10px + env(safe-area-inset-bottom));background:var(--fundo);border-top:3px solid var(--tinta)}
+.barra a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:3px;font-weight:700;text-decoration:none;border:3px solid var(--tinta);transition:transform .1s;-webkit-tap-highlight-color:transparent}
+.barra a svg{width:20px;height:20px}
+.barra .tel{background:var(--cor);color:var(--cor-txt)}
+.barra .wa{background:var(--tinta);color:var(--fundo)}
+
+/* aparecer ao rolar */
+.js .rv{opacity:0;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+
+@media (min-width:700px){
+  .trilho>*{flex-basis:45%}
+}
+@media (min-width:980px){
+  body{padding-bottom:0}
+  .barra,.btn-menu,.dica{display:none}
+  .menu-desk{display:flex}
+  .tel-top{display:block}
+  .hdr .btn{display:inline-flex;min-height:44px;padding:0 16px;font-size:.95rem}
+  h2{font-size:clamp(2.4rem,4vw,3.2rem)}
+  section{padding:84px 0}
+  .hero{padding:40px 0 80px}
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+  .hero h1{font-size:clamp(3.4rem,5.6vw,5.6rem)}
+  .hero .acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .hero-foto{margin:0;aspect-ratio:4/5;border:3px solid var(--tinta);grid-column:2;grid-row:1/3}
+  .trilho{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:0;gap:14px}
+  .quem-grid{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+  .onde{grid-template-columns:1fr 1fr;gap:56px}
+  .mapa{height:100%;min-height:320px}
+}
+</style>
+</head>
+<body>
+
+<div class="faixa" id="faixa"></div>
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#" id="logo"></a>
+  <nav class="menu-desk" id="menu-desk"></nav>
+  <div class="lado">
+    <a class="tel-top js-tel" id="tel-top"></a>
+    <a class="btn btn-preto js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span>WhatsApp</span></a>
+    <button class="btn-menu" id="abrir-menu" aria-label="Abrir menu"><svg data-i="menu"></svg></button>
+  </div>
+</div></header>
+
+<div class="veu" id="veu"></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Menu">
+  <div class="topo"><span>Menu</span><button id="fechar-menu" aria-label="Fechar menu">×</button></div>
+  <nav id="menu-mob"></nav>
+</div>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div>
+      <h1 id="h1"></h1>
+      <p class="apoio" id="h-apoio"></p>
+      <div class="acoes">
+        <a class="btn btn-preto js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span id="h-whats"></span></a>
+        <a class="btn btn-cor js-tel"><svg data-i="tel"></svg><span id="h-ligar"></span></a>
+      </div>
+    </div>
+    <div class="hero-foto" id="h-foto"></div>
+    <p class="loja rv" id="h-loja"></p>
+  </div></section>
+
+  <section id="servicos"><div class="wrap">
+    <h2 class="rv" id="s-titulo"></h2><p class="serv-txt rv" id="s-texto"></p>
+    <div class="trilho rv" id="s-lista"></div>
+    <p class="dica">Arraste pro lado pra ver todos os serviços.</p>
+    <div class="serv-rod" id="s-rod"></div>
+  </div></section>
+
+  <section class="quem" id="quem"><div class="wrap">
+    <div class="quem-grid rv">
+      <div class="foto" id="q-foto"></div>
+      <div id="q-texto"></div>
+    </div>
+    <h3 class="trab-tit" id="t-titulo"></h3>
+    <div class="trilho trab rv" id="t-lista"></div>
+    <p class="dica">Toque na foto pra ampliar.</p>
+  </div></section>
+
+  <section id="onde"><div class="wrap onde">
+    <div class="rv"><h2 id="o-titulo"></h2><p id="o-texto"></p><a class="end" id="o-end" target="_blank" rel="noopener"></a><div class="horas" id="o-horas"></div></div>
+    <div class="mapa rv" id="o-mapa"></div>
+  </div></section>
+
+  <section id="duvidas" style="padding-top:0"><div class="wrap">
+    <h2 class="rv" id="d-titulo"></h2>
+    <div class="duv rv" id="d-lista"></div>
+  </div></section>
+
+  <div class="final"><div class="wrap">
+    <h2 id="f-titulo"></h2>
+    <a class="big js-tel" id="f-tel"></a>
+  </div></div>
+</main>
+
+<footer><div class="wrap" id="rodape"></div></footer>
+
+<div class="barra" id="barra">
+  <a class="tel js-tel"><svg data-i="tel"></svg><span>Ligar</span></a>
+  <a class="wa js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span>WhatsApp</span></a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-label="Foto ampliada">
+  <button class="x" id="lb-x" aria-label="Fechar">×</button>
+  <div class="conteudo" id="lb-c"></div>
+  <div class="leg" id="lb-leg"></div>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  const C = CONFIG, $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const num = s => String(s || "").replace(/\D/g, "");
+  const WA = `https://wa.me/55${num(C.whatsapp)}?text=${encodeURIComponent(C.mensagemWhatsApp.replace(/\{nome\}/g, C.nome))}`;
+  const TEL = `tel:+55${num(C.telefone)}`;
+  const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}`;
+  const fmt = n => { const d = num(n); return d.length >= 10 ? `(${d.slice(0,2)}) ${d.slice(2,-4)}-${d.slice(-4)}` : n; };
+
+  const img = (src, alt, w, h, eager) => {
+    const base = src.split("?")[0], u = n => `${base}?w=${n}&q=70&auto=format`;
+    return `<img src="${u(800)}" srcset="${u(480)} 480w, ${u(800)} 800w, ${u(1200)} 1200w" sizes="(min-width:980px) 45vw, 100vw" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  };
+  const ph = legenda => `<div class="ph"><b>FOTO REAL DO CLIENTE</b><span>${esc(legenda)}</span></div>`;
+  const foto = (src, legenda, w, h, eager) => src ? img(src, legenda, w, h, eager) : ph(legenda);
+
+  const r = document.documentElement.style;
+  r.setProperty("--cor", C.cor); r.setProperty("--cor-txt", C.corTexto); r.setProperty("--fundo", C.fundo);
+
+  document.title = C.seo.title;
+  const ld = document.createElement("script"); ld.type = "application/ld+json";
+  ld.textContent = JSON.stringify({"@context":"https://schema.org","@type":"Locksmith",name:C.nome,description:C.seo.description,image:C.seo.ogImage,
+    telephone:"+55"+num(C.telefone),address:{"@type":"PostalAddress",streetAddress:C.endereco,addressLocality:C.cidade,addressRegion:C.uf,addressCountry:"BR"},openingHours:"Mo-Su 00:00-23:59"});
+  document.head.appendChild(ld);
+
+  $("faixa").textContent = C.faixa;
+  $("logo").innerHTML = `${esc(C.nome)}<span>${esc(C.complemento)}</span>`;
+  $("tel-top").textContent = fmt(C.telefone);
+  const links = C.menu.map(([h,t]) => `<a href="${h}">${esc(t)}</a>`).join("");
+  $("menu-desk").innerHTML = links; $("menu-mob").innerHTML = links;
+
+  const H = C.hero;
+  $("h1").textContent = H.titulo; $("h-apoio").textContent = H.apoio;
+  $("h-whats").textContent = H.botaoWhats; $("h-ligar").textContent = `${H.botaoLigar} ${fmt(C.telefone)}`;
+  $("h-foto").innerHTML = foto(H.imagem, C.nicho, 1200, 750, true);
+  $("h-loja").innerHTML = `<a href="${MAPS}" target="_blank" rel="noopener">${esc(H.loja)}</a>`;
+
+  const S = C.servicos;
+  $("s-titulo").textContent = S.titulo; $("s-texto").textContent = S.texto;
+  $("s-lista").innerHTML = S.itens.map(([n,d,p]) => `<div class="serv"><b>${esc(n)}</b><span>${esc(d)}</span><em>${esc(p)}</em></div>`).join("");
+  $("s-rod").innerHTML = `<div>${esc(S.marcas)}</div><div>Pagamento: ${esc(S.pagamento)}</div>`;
+
+  const Q = C.responsavel;
+  $("q-foto").innerHTML = foto(Q.foto, Q.legendaFoto, 800, 800);
+  $("q-texto").innerHTML = `<h2>${esc(Q.titulo)}</h2><h3>${esc(Q.nome)}</h3><p>${esc(Q.texto)}</p>`;
+  const T = C.trabalhos;
+  $("t-titulo").textContent = T.titulo;
+  $("t-lista").innerHTML = T.fotos.map((f, i) => `<figure data-i="${i}">${foto(f.img, f.legenda, 800, 1000)}</figure>`).join("");
+
+  const O = C.atendimento;
+  $("o-titulo").textContent = O.titulo; $("o-texto").textContent = O.texto;
+  $("o-end").href = MAPS; $("o-end").textContent = `${C.endereco}, ${C.cidade}`;
+  $("o-horas").innerHTML = O.horario.map(([a,b]) => `<div><span>${esc(a)}</span><span>${esc(b)}</span></div>`).join("");
+  const mapSrc = C.mapsEmbed || `https://www.google.com/maps?q=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}&z=14&output=embed`;
+  $("o-mapa").innerHTML = `<iframe src="${esc(mapSrc)}" loading="lazy" title="Mapa"></iframe>`;
+
+  $("d-titulo").textContent = C.duvidas.titulo;
+  $("d-lista").innerHTML = C.duvidas.itens.map(d => `<details><summary>${esc(d.p)}</summary><p>${esc(d.r)}</p></details>`).join("");
+
+  $("f-titulo").textContent = C.final;
+  $("f-tel").textContent = fmt(C.telefone);
+  $("rodape").textContent = C.rodape;
+
+  const I = {
+    wa:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 .1 5.3.1 11.9c0 2.1.5 4.2 1.6 6L0 24l6.3-1.6c1.8 1 3.8 1.5 5.7 1.5 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.5z"/></svg>',
+    tel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+    menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>'
+  };
+  document.querySelectorAll("svg[data-i]").forEach(s => s.outerHTML = I[s.dataset.i]);
+  document.querySelectorAll(".js-wa").forEach(a => a.href = WA);
+  document.querySelectorAll(".js-tel").forEach(a => a.href = TEL);
+
+  const hdr = $("hdr");
+  addEventListener("scroll", () => hdr.classList.toggle("mini", scrollY > 40), { passive: true });
+
+  const abre = v => document.body.classList.toggle("menu-aberto", v);
+  $("abrir-menu").onclick = () => abre(true);
+  $("fechar-menu").onclick = $("veu").onclick = () => abre(false);
+  $("menu-mob").addEventListener("click", e => { if (e.target.closest("a")) abre(false); });
+
+  document.querySelectorAll(".duv details").forEach(d => d.addEventListener("toggle", () => {
+    if (d.open) document.querySelectorAll(".duv details").forEach(o => o !== d && (o.open = false));
+  }));
+
+  const lb = $("lb"), lbc = $("lb-c");
+  const abreFoto = i => { const f = T.fotos[i]; lbc.innerHTML = f.img ? img(f.img, f.legenda, 1200, 1500, true) : ph(f.legenda); $("lb-leg").textContent = f.legenda; lb.classList.add("on"); document.body.style.overflow = "hidden"; };
+  const fechaFoto = () => { lb.classList.remove("on"); lbc.style.transform = ""; lbc.style.opacity = ""; document.body.style.overflow = ""; };
+  $("t-lista").addEventListener("click", e => { const f = e.target.closest("figure"); if (f) abreFoto(+f.dataset.i); });
+  $("lb-x").onclick = fechaFoto;
+  addEventListener("keydown", e => { if (e.key === "Escape") { fechaFoto(); abre(false); } });
+  let y0 = null;
+  lb.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; }, { passive: true });
+  lb.addEventListener("touchmove", e => { if (y0 === null) return; const dy = Math.max(0, e.touches[0].clientY - y0); lbc.style.transform = `translateY(${dy}px)`; lbc.style.opacity = 1 - dy / 400; }, { passive: true });
+  lb.addEventListener("touchend", e => { const dy = e.changedTouches[0].clientY - y0; y0 = null; if (dy > 90) fechaFoto(); else { lbc.style.transform = ""; lbc.style.opacity = ""; } });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

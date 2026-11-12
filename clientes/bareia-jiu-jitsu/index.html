@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- SEO-ESTATICO -->
+<title>Bareia Jiu-Jitsu | Jiu-jitsu em Sorocaba</title>
+<meta name="description" content="Jiu-jitsu em Sorocaba com turmas às 6h30, no almoço e à noite. Graduação por faixa com critério claro e primeira aula grátis.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Bareia Jiu-Jitsu | Jiu-jitsu em Sorocaba">
+<meta property="og:description" content="Jiu-jitsu em Sorocaba com turmas às 6h30, no almoço e à noite. Graduação por faixa com critério claro e primeira aula grátis.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1681923445357-0679553160da?w=1200&amp;q=80">
+<meta name="geo.region" content="BR-SP">
+<meta name="geo.placename" content="Sorocaba">
+<!-- /SEO-ESTATICO -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script>
+/* ESTILO C: "Loja/estúdio". Celular primeiro (ver MOBILE.md). Todo o conteúdo sai do CONFIG.
+   Ritmo: hero foto tela cheia > faixa cor > escuro > claro > cor > claro > escuro */
+const CONFIG = /*CONFIG-INICIO*/{
+  estilo: "c",
+  nome: "Bareia Jiu-Jitsu",
+  complemento: "Sorocaba",
+  nicho: "Escola de jiu-jitsu",
+  whatsapp: "[WHATSAPP]",
+  telefone: "[WHATSAPP]",
+  cidade: "Sorocaba",
+  bairro: "Centro",
+  uf: "SP",
+  endereco: "Rua de exemplo, 85, Centro",
+  pontoReferencia: "",
+  mapsEmbed: "https://www.google.com/maps?q=Sorocaba+SP&z=13&output=embed",
+  cor: "#2B2E33",            /* grafite do B cromado do logo */
+  corClara: "#F0464C",       /* vermelho da ponta da faixa: destaque em fundo escuro */
+  fundo: "#F3F4F5",
+  tinta: "#121315",
+  /* logo redondo do cliente recortado em círculo */
+  marca: { img: "logo.png", prop: 1, noHero: true },
+  mensagemWhatsApp: "Olá, vim pelo site e quero marcar uma aula experimental de jiu-jitsu na Bareia.",
+  menu: [["#horarios", "Turmas e horários"], ["#planos", "Planos"], ["#espaco", "O tatame"], ["#professor", "O professor"], ["#contato", "Onde fica"]],
+
+  seo: {
+    title: "Bareia Jiu-Jitsu | Jiu-jitsu em Sorocaba",
+    description: "Jiu-jitsu em Sorocaba com turmas às 6h30, no almoço e à noite. Graduação por faixa com critério claro e primeira aula grátis.",
+    ogImage: "https://images.unsplash.com/photo-1681923445357-0679553160da?w=1200&q=80"
+  },
+
+  hero: {
+    titulo: "Jiu-jitsu em Sorocaba, faixa por faixa.",
+    apoio: "Turma às 6h30, no almoço e à noite. A primeira aula é grátis.",
+    botao: "Marcar aula experimental",
+    link2: ["#horarios", "Ver horários"],
+    chips: [
+      { nome: "Kimono", img: "https://images.unsplash.com/photo-1681923445357-0679553160da", foco: "55% 50%", linha: "Seg a sex às 6h30, 12h e 19h30." },
+      { nome: "Sem kimono", img: "https://images.unsplash.com/photo-1602827113876-839bcf3ccb3a", foco: "50% 45%", linha: "Ter e qui às 20h30. Sábado às 9h." },
+      { nome: "Fundamentos", img: "https://images.unsplash.com/photo-1688744250249-59238ed4ad3a", foco: "50% 50%", linha: "Pra faixa branca, seg, qua e sex às 19h30." }
+    ]
+  },
+
+  faixa: ["Jiu-jitsu", "Kimono", "Sem kimono", "Fundamentos", "Turma das 6h30", "Graduação"],
+
+  modalidades: {
+    titulo: "Turmas e horários",
+    texto: "Tem turma antes do trabalho, no almoço e depois do expediente. Dá pra treinar em qualquer uma delas.",
+    aviso: "Horários e valores de exemplo, só pra mostrar como fica. A gente troca pelos dados reais da academia.",
+    itens: [
+      { nome: "Fundamentos", publico: "Faixa branca, nos 3 primeiros meses", horarios: ["Seg, qua e sex: 19h30"], desc: "Postura, saída de baixo, passagem de guarda e as finalizações básicas, numa ordem que se repete a cada 8 semanas.", img: "https://images.unsplash.com/photo-1599677100022-fa8aba7d2467?w=800&q=75" },
+      { nome: "Jiu-jitsu com kimono", publico: "Adulto, todas as faixas", horarios: ["Seg a sex: 6h30 e 12h", "Ter e qui: 19h30"], desc: "Uma hora de aula com aquecimento, técnica da semana, drill e rola. A das 6h30 acaba a tempo de ir trabalhar.", img: "https://images.unsplash.com/photo-1783942767574-37cd83df32ba?w=800&q=75" },
+      { nome: "Sem kimono", publico: "Adulto, a partir de 15 anos", horarios: ["Ter e qui: 20h30", "Sábado: 9h"], desc: "De rash guard e bermuda. Mais queda, pegada nas costas e chave de perna.", img: "https://images.unsplash.com/photo-1602827113876-839bcf3ccb3a?w=800&q=75" },
+      { nome: "Rola livre", publico: "Quem já faz as aulas", horarios: ["Sábado: 10h às 11h30"], desc: "Sem aula de técnica: só rounds de 6 minutos, trocando de parceiro a cada round.", img: "https://images.unsplash.com/photo-1782849159378-a068078370bf?w=800&q=75" }
+    ]
+  },
+
+  planos: {
+    titulo: "Planos",
+    texto: "Matrícula de R$ 60. No mensal não tem fidelidade.",
+    aviso: "Horários e valores de exemplo, só pra mostrar como fica. A gente troca pelos dados reais da academia.",
+    itens: [
+      { nome: "Manhã ou almoço", preco: "R$ 150", periodo: "por mês", inclui: ["Turmas das 6h30 e das 12h", "Rola livre de sábado"] },
+      { nome: "Livre", preco: "R$ 190", periodo: "por mês", inclui: ["Todas as turmas", "Com e sem kimono"], destaque: "Mais escolhido" },
+      { nome: "Semestral livre", preco: "R$ 990", periodo: "a cada 6 meses", inclui: ["Sai R$ 165 por mês", "Todas as turmas"] }
+    ],
+    rodape: "Exame de faixa sem taxa extra. Aceitamos Pix, cartão de crédito e débito."
+  },
+
+  galeria: {
+    titulo: "O tatame",
+    texto: "Treino da manhã, rola de sábado e a faixa amarrada no fim da aula.",
+    fotos: [
+      { img: "https://images.unsplash.com/photo-1602827115217-4764d340e976", legenda: "Pegada na gola" },
+      { img: "https://images.unsplash.com/photo-1783942767799-431aa37e5b6b", legenda: "Descanso entre os rounds" },
+      { img: "https://images.unsplash.com/photo-1684909927604-8b3fbc21146a", legenda: "Aluna faixa azul" },
+      { img: "https://images.unsplash.com/photo-1783942767574-37cd83df32ba", legenda: "Rola no fim da aula" }
+    ]
+  },
+
+  professor: {
+    titulo: "O professor",
+    nome: "Professor Bareia",
+    cargo: "Faixa preta de jiu-jitsu",
+    texto: "Dá todas as aulas da semana, da turma das 6h30 à da noite. Cada aluno sabe o que falta pro próximo grau, porque o critério da graduação fica escrito na parede da academia.",
+    foto: "https://images.unsplash.com/photo-1720730790876-3508a749abfe",
+    legendaFoto: "Professor antes do treino",
+    fatos: [["Graduação", "Faixa preta (exemplo)"], ["Exame de faixa", "Duas vezes por ano"], ["Turma", "No máximo 20 alunos no tatame"]]
+  },
+
+  contato: {
+    titulo: "Onde fica",
+    endereco: "Rua de exemplo, 85, Centro, Sorocaba",
+    referencia: "Endereço de exemplo.",
+    google: "",
+    horario: [["Segunda a sexta", "6h30 às 21h30"], ["Sábado", "9h às 11h30"], ["Domingo", "Fechado"]],
+    faqTitulo: "Perguntas de aluno novo",
+    faq: [
+      { p: "Quanto tempo demora pra pegar a faixa azul?", r: "Quem treina 3 vezes por semana costuma chegar lá em 1 ano e meio a 2 anos. O que vale é o critério da faixa, não o tempo." },
+      { p: "Trabalho o dia todo. Tem horário pra mim?", r: "Tem a turma das 6h30, a do almoço às 12h e a da noite às 19h30. No plano livre você usa qualquer uma." },
+      { p: "Preciso ter kimono pra primeira aula?", r: "Não, a gente empresta. Se gostar, ajudamos a escolher o tamanho certo." },
+      { p: "Tenho 40 anos e nunca treinei. Dá pra começar?", r: "Dá. A turma de fundamentos é feita pra isso, com rola só com quem está no mesmo nível." }
+    ]
+  },
+
+  rodape: "Bareia Jiu-Jitsu, academia de jiu-jitsu em Sorocaba."
+}/*CONFIG-FIM*/;
+</script>
+
+<style>
+:root{--cor:#1F4FA3;--cor-clara:#9DB8F2;--fundo:#F2F0EB;--tinta:#1A1A1A;--escuro:#141414;
+  --cond:"Barlow Condensed",Impact,sans-serif;--txt:"Barlow",system-ui,sans-serif;--wrap:1160px;
+  --barra:calc(76px + env(safe-area-inset-bottom));
+  /* variáveis de superfície: cada fundo redefine */
+  --texto:var(--tinta);--suave:#57544E;--linha:#D8D4CB;--destaque:var(--cor);--card:#FFFFFF;--ph:#D9D6CF;--ph-txt:#6E6A62;
+  --cor-txt:#fff}
+/* CONFIG.corTexto: marca clara (amarelo etc.) pede texto escuro em cima da cor */
+.cor-txt-escuro .s-cor{--texto:var(--cor-txt);--suave:rgba(0,0,0,.72);--linha:rgba(0,0,0,.2);--destaque:var(--cor-txt);--ph:rgba(0,0,0,.1);--ph-txt:rgba(0,0,0,.7)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:60px;overflow-x:clip}
+body{font-family:var(--txt);background:var(--fundo);color:var(--texto);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:var(--barra)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px;position:relative;z-index:1}
+h1,h2,h3{overflow-wrap:break-word;font-family:var(--cond);font-weight:700;text-transform:uppercase;line-height:1}
+h2{font-size:30px;margin-bottom:12px}
+.intro{color:var(--suave);max-width:60ch;margin-bottom:28px}
+/* aviso opcional (ex: valores de exemplo em demo) */
+.aviso{max-width:60ch;margin:-12px 0 28px;padding:10px 14px;border-left:3px solid var(--destaque);background:rgba(127,127,127,.1);font-size:.95rem;font-weight:600}
+
+/* ritmo: 72px celular / 112px computador, fundos alternados */
+section{padding:72px 0;position:relative;color:var(--texto)}
+.s-escuro{background:var(--escuro);--texto:#F2F0EB;--suave:#B3AFA6;--linha:rgba(255,255,255,.13);--destaque:var(--cor-clara);--card:#1E1E1E;--ph:#2A2A2A;--ph-txt:#8F8B83}
+.s-claro{background:var(--fundo)}
+.s-cor{background:var(--cor);--texto:#FFFFFF;--suave:rgba(255,255,255,.82);--linha:rgba(255,255,255,.25);--destaque:#FFFFFF;--ph:rgba(255,255,255,.14);--ph-txt:rgba(255,255,255,.85)}
+/* granulação leve nas seções escuras */
+.s-escuro::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 20px;border-radius:4px;font-weight:700;font-size:1rem;text-decoration:none;border:2px solid var(--cor);background:var(--cor);color:var(--cor-txt);transition:transform .1s;-webkit-tap-highlight-color:transparent}
+.btn:active,.barra a:active,.chip:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-claro{background:transparent;border-color:#fff;color:#fff}
+
+/* header: transparente em cima da foto, sólido ao rolar */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:40;color:#fff;transition:background .25s,color .25s,border-color .25s;border-bottom:1px solid transparent}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;transition:height .2s}
+.hdr.solido{background:var(--fundo);color:var(--tinta);border-bottom-color:#D8D4CB}
+.hdr.solido .wrap{height:54px}
+.logo{font-family:var(--cond);font-weight:800;font-size:1.4rem;text-transform:uppercase;text-decoration:none;line-height:1;min-height:48px;display:flex;flex-direction:column;justify-content:center}
+.logo small{display:block;margin-top:4px;line-height:1.2;font-family:var(--txt);font-weight:600;font-size:.66rem;letter-spacing:.14em;opacity:.75}
+/* marca desenhada (CONFIG.marca): nome com preenchimento, contorno e borda escura, inclinado */
+.wm{display:block;height:40px;width:auto;overflow:visible}
+.wm text{font-family:var(--cond);font-weight:800;text-transform:uppercase}
+.wm .t1o{fill:#0B0B0B;stroke:#0B0B0B;stroke-width:14;stroke-linejoin:round}
+.wm .t1{fill:var(--m1);stroke:var(--m2);stroke-width:3.5;paint-order:stroke;stroke-linejoin:round}
+.wm .t2o{fill:#0B0B0B;stroke:#0B0B0B;stroke-width:6;stroke-linejoin:round;text-anchor:middle;letter-spacing:.3em;font-weight:700}
+.wm .t2{fill:var(--m2);text-anchor:middle;letter-spacing:.3em;font-weight:700}
+.logo.com-img{flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;font-size:1.15rem}
+.logo .wm-img{height:44px;width:auto}
+.marca-hero .wm-img{display:block;height:auto;width:min(100%,calc(150px * var(--prop,1)));filter:drop-shadow(0 1px 2px rgba(0,0,0,.7)) drop-shadow(0 0 10px rgba(0,0,0,.35))}
+@media (max-height:700px){.marca-hero .wm-img{width:min(85%,calc(110px * var(--prop,1)))}}
+.marca-hero{margin-bottom:14px}
+.marca-hero .wm{height:96px}
+/* com a marca grande no hero, o logo do header só aparece depois de rolar */
+.marca-no-hero .hdr:not(.solido) .logo{visibility:hidden}
+@media (min-width:980px){.marca-hero .wm{height:110px}.hdr .wm{height:44px}.hero .wrap{padding-top:96px}}
+.menu-desk,.hdr .btn{display:none}
+.menu-desk{gap:24px;font-weight:600;font-size:.95rem}
+.menu-desk a{text-decoration:none}
+.btn-menu{width:48px;height:48px;display:grid;place-items:center;margin-right:-10px}
+.btn-menu svg{width:26px;height:26px}
+
+/* painel do menu (de baixo pra cima) */
+.veu{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--fundo);color:var(--tinta);border-radius:6px 6px 0 0;padding:8px 20px calc(20px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s}
+.menu-aberto .veu{opacity:1;pointer-events:auto}
+.menu-aberto .sheet{transform:none}
+.sheet .topo{display:flex;justify-content:space-between;align-items:center;min-height:56px;font-weight:700;color:#57544E}
+.sheet .topo button{width:48px;height:48px;font-size:28px;margin-right:-10px}
+.sheet nav a{display:flex;align-items:center;min-height:58px;border-top:1px solid #D8D4CB;font-family:var(--cond);font-weight:700;font-size:1.6rem;text-transform:uppercase;text-decoration:none}
+
+/* hero: foto em tela cheia, texto por cima, alinhado embaixo */
+.hero{position:relative;min-height:100vh;min-height:100svh;padding:0;display:flex;align-items:flex-end;color:#fff;background:var(--escuro);overflow:hidden}
+.hero-foto{position:absolute;inset:0}
+.hero-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s ease}
+.hero-foto img.on{opacity:1}
+.hero-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,0) 75%),linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 110px)}
+.hero .wrap{width:100%;padding-bottom:calc(var(--barra) + 20px)}
+.hero h1{font-size:42px;margin-bottom:12px;max-width:14ch}
+.hero .apoio{font-size:1.06rem;max-width:40ch;margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:0 16px;border-radius:4px;border:1.5px solid rgba(255,255,255,.6);font-weight:700;font-size:1rem;transition:background .2s,color .2s,transform .1s}
+.chip[aria-pressed="true"]{background:#fff;color:var(--tinta);border-color:#fff}
+.linha-chip{margin-top:12px;font-size:.98rem;color:rgba(255,255,255,.88);min-height:3em}
+.hero .acoes{display:none}
+
+/* faixa rolando devagar */
+.faixa{background:var(--cor);color:var(--cor-txt);overflow:hidden;padding:14px 0;border-top:1px solid rgba(255,255,255,.2)}
+.faixa-trilho{display:flex;width:max-content;animation:faixa 45s linear infinite}
+.faixa span{font-family:var(--cond);font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.04em;padding:0 22px;white-space:nowrap}
+.faixa span+span::before{content:"/";margin-right:44px;opacity:.5}
+@keyframes faixa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* placeholder de foto */
+.ph{background:var(--ph);color:var(--ph-txt);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:16px;width:100%;height:100%}
+.ph b{font-family:var(--cond);font-size:1.1rem;letter-spacing:.06em}
+.ph span{font-size:.9rem}
+
+/* carrossel */
+.trilho{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 6px;scroll-padding:0 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>*{flex:0 0 84%;scroll-snap-align:start}
+.dica{font-size:.92rem;color:var(--suave);margin-top:12px}
+
+/* cards de modalidade */
+.card{background:var(--card);border:1px solid var(--linha);border-radius:4px;overflow:hidden;display:flex;flex-direction:column}
+.card .foto{aspect-ratio:3/2;background:var(--ph);overflow:hidden}
+.card .foto img{width:100%;height:100%;object-fit:cover}
+.card .bd{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:1.75rem}
+.card .pub{font-weight:600;color:var(--destaque);font-size:.95rem}
+.card p{color:var(--suave);font-size:1rem}
+.card ul{list-style:none;margin-top:auto;border-top:2px solid var(--texto)}
+.card li{padding:9px 0;border-bottom:1px solid var(--linha);font-weight:600;font-size:.98rem}
+.card li:last-child{border:0}
+
+/* toque: zoom leve na foto + borda na cor da marca (planos e professor) */
+.toque{transition:border-color .25s}
+.toque .zoom img{transition:transform .35s ease}
+.toque:hover,.toque:active,.toque.tocado{border-color:var(--cor)}
+.toque:hover .zoom img,.toque:active .zoom img,.toque.tocado .zoom img{transform:scale(1.04)}
+
+/* planos */
+.planos{display:grid;gap:24px}
+.plano{min-width:0;overflow-wrap:anywhere;background:var(--card);border:2px solid var(--linha);border-radius:4px;padding:24px 20px;position:relative}
+.plano.dest{border-color:var(--cor)}
+.plano .tag{position:absolute;top:-2px;right:14px;background:var(--cor);color:var(--cor-txt);font-size:.75rem;font-weight:700;padding:4px 8px;border-radius:0 0 3px 3px;text-transform:uppercase;letter-spacing:.06em}
+.plano h3{font-size:1.5rem}
+.plano .preco{font-family:var(--cond);font-weight:800;font-size:2.4rem;margin:8px 0 0;line-height:1}
+.plano .per{color:var(--suave);font-size:.95rem;margin-bottom:12px}
+.plano ul{list-style:none;border-top:1px solid var(--linha)}
+.plano li{padding:9px 0;border-bottom:1px solid var(--linha)}
+.planos-rod{margin-top:24px;color:var(--suave);max-width:70ch}
+
+/* galeria */
+.gal figure{aspect-ratio:4/5;border-radius:4px;overflow:hidden;cursor:zoom-in}
+.gal figure img{width:100%;height:100%;object-fit:cover}
+
+/* professor */
+.prof{display:grid;gap:24px;background:var(--card);border:2px solid var(--linha);border-radius:4px;padding:20px}
+.prof .foto{aspect-ratio:4/5;border-radius:3px;overflow:hidden}
+.prof .foto img{width:100%;height:100%;object-fit:cover}
+.prof h3{font-size:2rem}
+.prof .cargo{color:var(--destaque);font-weight:700;margin:4px 0 12px}
+.prof dl{margin-top:20px;border-top:2px solid var(--texto)}
+.prof dl div{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha)}
+.prof dt{font-weight:700}
+
+/* tela cheia */
+.lb{position:fixed;inset:0;z-index:70;background:rgba(10,10,10,.94);display:none;align-items:center;justify-content:center;padding:64px 16px calc(24px + env(safe-area-inset-bottom));touch-action:none;color:#fff}
+.lb.on{display:flex}
+.lb .conteudo{width:100%;max-width:900px;max-height:100%;aspect-ratio:4/5;transition:transform .2s,opacity .2s;--ph:#2A2A2A;--ph-txt:#aaa}
+.lb .conteudo img{width:100%;height:100%;object-fit:contain}
+.lb .x{position:absolute;top:calc(8px + env(safe-area-inset-top));right:8px;width:48px;height:48px;color:#fff;font-size:34px;line-height:1}
+.lb .leg{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));text-align:center;color:#ddd;font-size:.95rem;padding:0 20px}
+
+/* contato */
+.cont{display:grid;gap:24px}
+.mapa{border:1px solid var(--linha);border-radius:4px;overflow:hidden;height:260px}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+.end{display:inline-flex;align-items:center;min-height:48px;font-size:1.1rem;font-weight:700;color:var(--destaque);text-underline-offset:3px}
+.ref{color:var(--suave);margin:0 0 6px}
+.google{font-weight:600;margin-bottom:20px}
+.horas{border-top:2px solid var(--texto)}
+.horas div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha)}
+
+/* FAQ: um aberto por vez, linha inteira clicável */
+.faq{margin-top:48px}
+.faq h3{font-size:1.6rem;margin-bottom:12px}
+.faq details{border-bottom:1px solid var(--linha)}
+.faq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;font-weight:700;-webkit-tap-highlight-color:transparent}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;font-weight:400;flex:none;width:24px;text-align:center}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 0 16px;color:var(--suave);max-width:70ch}
+
+footer{background:var(--escuro);color:#8F8B83;border-top:1px solid rgba(255,255,255,.1);padding:28px 0;font-size:.95rem}
+
+/* barra fixa de contato */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 20px calc(10px + env(safe-area-inset-bottom));background:var(--fundo);border-top:1px solid #D8D4CB}
+.barra a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:4px;font-weight:700;text-decoration:none;border:2px solid var(--tinta);color:var(--tinta);transition:transform .1s;-webkit-tap-highlight-color:transparent}
+.barra a svg{width:20px;height:20px}
+.barra .wa{background:#1F8F4E;border-color:#1F8F4E;color:#fff}
+
+/* aparecer ao rolar */
+.js .rv{opacity:0;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+
+@media (min-width:700px){
+  .trilho>*{flex-basis:46%}
+  .planos{grid-template-columns:repeat(3,1fr)}
+  .prof{grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start;padding:28px}
+}
+@media (min-width:980px){
+  body{padding-bottom:0}
+  .barra,.btn-menu,.dica{display:none}
+  .menu-desk{display:flex}
+  .hdr .btn{display:inline-flex;min-height:44px}
+  h2{font-size:clamp(2.4rem,4vw,3.2rem)}
+  section{padding:112px 0}
+  .hero{min-height:92vh;padding:0}
+  .hero .wrap{padding-bottom:80px}
+  .hero h1{font-size:clamp(3.6rem,6vw,5.4rem);max-width:16ch}
+  .hero .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .trilho{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0;gap:24px}
+  .cont{grid-template-columns:1fr 1fr;gap:48px}
+  .mapa{height:100%;min-height:340px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#" id="logo"></a>
+  <nav class="menu-desk" id="menu-desk"></nav>
+  <a class="btn js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span>WhatsApp</span></a>
+  <button class="btn-menu" id="abrir-menu" aria-label="Abrir menu"><svg data-i="menu"></svg></button>
+</div></header>
+
+<div class="veu" id="veu"></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Menu">
+  <div class="topo"><span>Menu</span><button id="fechar-menu" aria-label="Fechar menu">×</button></div>
+  <nav id="menu-mob"></nav>
+</div>
+
+<main>
+  <section class="hero" id="topo">
+    <div class="hero-foto" id="h-fotos"></div>
+    <div class="wrap">
+      <div class="marca-hero" id="h-marca"></div>
+      <h1 id="h1"></h1>
+      <p class="apoio" id="h-apoio"></p>
+      <div class="chips" id="h-chips" role="group" aria-label="Modalidades"></div>
+      <p class="linha-chip" id="h-linha" aria-live="polite"></p>
+      <div class="acoes">
+        <a class="btn js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span id="h-botao"></span></a>
+        <a class="btn btn-claro" id="h-link2"></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
+
+  <section class="s-escuro" id="horarios"><div class="wrap">
+    <h2 class="rv" id="m-titulo"></h2><p class="intro rv" id="m-texto"></p><p class="aviso rv" id="m-aviso"></p>
+    <div class="trilho rv" id="m-lista"></div>
+    <p class="dica">Arraste pro lado pra ver todas as modalidades.</p>
+  </div></section>
+
+  <section class="s-claro" id="planos"><div class="wrap">
+    <h2 class="rv" id="p-titulo"></h2><p class="intro rv" id="p-texto"></p><p class="aviso rv" id="p-aviso"></p>
+    <div class="planos rv" id="p-lista"></div>
+    <p class="planos-rod" id="p-rod"></p>
+  </div></section>
+
+  <section class="s-cor" id="espaco"><div class="wrap">
+    <h2 class="rv" id="g-titulo"></h2><p class="intro rv" id="g-texto"></p>
+    <div class="trilho gal rv" id="g-lista"></div>
+    <p class="dica">Toque na foto pra ampliar.</p>
+  </div></section>
+
+  <section class="s-claro" id="professor"><div class="wrap">
+    <h2 class="rv" id="pr-titulo"></h2>
+    <div class="prof toque rv">
+      <div class="foto zoom" id="pr-foto"></div>
+      <div id="pr-texto"></div>
+    </div>
+  </div></section>
+
+  <section class="s-escuro" id="contato"><div class="wrap">
+    <h2 class="rv" id="c-titulo"></h2>
+    <div class="cont rv">
+      <div id="c-info"></div>
+      <div class="mapa" id="c-mapa"></div>
+    </div>
+    <div class="faq rv" id="c-faq"></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap" id="rodape"></div></footer>
+
+<div class="barra" id="barra">
+  <a class="js-tel"><svg data-i="tel"></svg><span>Ligar</span></a>
+  <a class="wa js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span>WhatsApp</span></a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-label="Foto ampliada">
+  <button class="x" id="lb-x" aria-label="Fechar">×</button>
+  <div class="conteudo" id="lb-c"></div>
+  <div class="leg" id="lb-leg"></div>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  const C = CONFIG, $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const num = s => String(s || "").replace(/\D/g, "");
+  const WA = `https://wa.me/55${num(C.whatsapp)}?text=${encodeURIComponent(C.mensagemWhatsApp.replace(/\{nome\}/g, C.nome))}`;
+  const TEL = `tel:+55${num(C.telefone)}`;
+  const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}`;
+
+  /* imagem leve: Unsplash em 480/800/1200 conforme a tela */
+  const img = (src, alt, w, h, eager, sizes) => {
+    const base = src.split("?")[0], u = n => `${base}?w=${n}&q=70&auto=format`;
+    return `<img src="${u(800)}" srcset="${u(480)} 480w, ${u(800)} 800w, ${u(1200)} 1200w, ${u(1800)} 1800w" sizes="${sizes || "(min-width:980px) 33vw, 85vw"}" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  };
+  const ph = legenda => `<div class="ph"><b>FOTO REAL DO CLIENTE</b><span>${esc(legenda)}</span></div>`;
+  const foto = (src, legenda, w, h, eager) => src ? img(src, legenda, w, h, eager) : ph(legenda);
+
+  const r = document.documentElement.style;
+  r.setProperty("--cor", C.cor); r.setProperty("--cor-clara", C.corClara); r.setProperty("--fundo", C.fundo); r.setProperty("--tinta", C.tinta);
+  /* marca clara: texto escuro em cima da cor e destaque na tinta (amarelo não lê em fundo claro) */
+  if (C.corTexto) { r.setProperty("--cor-txt", C.corTexto); r.setProperty("--destaque", C.tinta); document.documentElement.classList.add("cor-txt-escuro"); }
+
+  document.title = C.seo.title;
+  const ld = document.createElement("script"); ld.type = "application/ld+json";
+  ld.textContent = JSON.stringify({"@context":"https://schema.org","@type":"SportsActivityLocation",name:C.nome,description:C.seo.description,image:C.seo.ogImage,
+    telephone:"+55"+num(C.telefone),address:{"@type":"PostalAddress",streetAddress:C.endereco,addressLocality:C.cidade,addressRegion:C.uf,addressCountry:"BR"}});
+  document.head.appendChild(ld);
+
+  /* logo: texto simples, ou marca desenhada se CONFIG.marca existir */
+  const M0 = C.marca;
+  const marcaSVG = () => `<svg class="wm" role="img" aria-label="${esc(C.nome)}" style="--m1:${M0.preenchimento};--m2:${M0.contorno}"><g class="g">
+      <g transform="skewX(-10)"><text class="t1o" x="10" y="72" font-size="78">${esc(M0.linha1)}</text><text class="t1" x="10" y="72" font-size="78">${esc(M0.linha1)}</text></g>
+      <text class="t2o" x="0" y="104" font-size="19">${esc(M0.linha2)}</text><text class="t2" x="0" y="104" font-size="19">${esc(M0.linha2)}</text></g></svg>`;
+  const ajustaMarca = () => document.querySelectorAll(".wm").forEach(s => {
+    const b1 = s.querySelector(".t1").getBBox(), cx = b1.x + b1.width / 2 - 6;
+    s.querySelectorAll(".t2,.t2o").forEach(t => t.setAttribute("x", cx));
+    const b = s.querySelector(".g").getBBox(), p = 9;
+    s.setAttribute("viewBox", `${b.x - p} ${b.y - p} ${b.width + p * 2} ${b.height + p * 2}`);
+  });
+  if (M0 && M0.img) {
+    /* logo em imagem (desenho do cliente): versão escura no header claro, versão clara em cima da foto */
+    /* prop = largura/altura do logo (1 = quadrado). nomeNoHeader:false quando o logo já tem o nome legível */
+    const prop = M0.prop || 1;
+    $("logo").classList.add("com-img");
+    $("logo").innerHTML = `<img class="wm-img" src="${M0.img}" alt="${M0.nomeNoHeader === false ? esc(C.nome) : ""}" width="${Math.round(44 * prop)}" height="44">` +
+      (M0.nomeNoHeader === false ? "" : `<span>${esc(C.nome)}<small>${esc(C.complemento)}</small></span>`);
+    if (M0.noHero) { $("h-marca").innerHTML = `<img class="wm-img" style="--prop:${prop}" src="${M0.imgClaro || M0.img}" alt="${esc(C.nome)}" width="${Math.round(160 * prop)}" height="160">`; document.body.classList.add("marca-no-hero"); } else $("h-marca").remove();
+  } else if (M0) {
+    $("logo").innerHTML = marcaSVG();
+    if (M0.noHero) { $("h-marca").innerHTML = marcaSVG(); document.body.classList.add("marca-no-hero"); } else $("h-marca").remove();
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(ajustaMarca);
+    ajustaMarca();
+  } else {
+    $("logo").innerHTML = `${esc(C.nome)}<small>${esc(C.complemento)}</small>`;
+    $("h-marca").remove();
+  }
+  const links = C.menu.map(([h,t]) => `<a href="${h}">${esc(t)}</a>`).join("");
+  $("menu-desk").innerHTML = links; $("menu-mob").innerHTML = links;
+
+  /* hero com chips que trocam a foto */
+  const H = C.hero;
+  $("h1").textContent = H.titulo;
+  $("h-apoio").textContent = H.apoio;
+  $("h-botao").textContent = H.botao;
+  $("h-link2").href = H.link2[0]; $("h-link2").textContent = H.link2[1];
+  $("h-fotos").innerHTML = H.chips.map((c, i) => img(c.img, c.nome + " em " + C.bairro, 1200, 1600, i === 0, "100vw").replace("<img ", `<img data-i="${i}" style="object-position:${c.foco || "50% 50%"}" ${i === 0 ? 'class="on" ' : ""}`)).join("");
+  $("h-chips").innerHTML = H.chips.map((c, i) => `<button class="chip" data-i="${i}" aria-pressed="${i === 0}">${esc(c.nome)}</button>`).join("");
+  const escolhe = i => {
+    $("h-fotos").querySelectorAll("img").forEach(im => im.classList.toggle("on", +im.dataset.i === i));
+    $("h-chips").querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === i));
+    $("h-linha").textContent = H.chips[i].linha;
+  };
+  $("h-chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) escolhe(+b.dataset.i); });
+  escolhe(0);
+
+  /* faixa: repete o conteúdo pra rolar sem emenda */
+  const f = C.faixa.map(t => `<span>${esc(t)}</span>`).join("");
+  $("faixa").innerHTML = f + f;
+
+  const M = C.modalidades;
+  $("m-titulo").textContent = M.titulo; $("m-texto").textContent = M.texto;
+  if (M.aviso) $("m-aviso").textContent = M.aviso; else $("m-aviso").remove();
+  $("m-lista").innerHTML = M.itens.map(m => `<article class="card">
+      <div class="foto">${foto(m.img, m.legendaFoto || m.nome, 800, 533)}</div>
+      <div class="bd"><h3>${esc(m.nome)}</h3><div class="pub">${esc(m.publico)}</div><p>${esc(m.desc)}</p>
+      <ul>${m.horarios.map(h => `<li>${esc(h)}</li>`).join("")}</ul></div></article>`).join("");
+
+  const P = C.planos;
+  $("p-titulo").textContent = P.titulo; $("p-texto").textContent = P.texto;
+  if (P.aviso) $("p-aviso").textContent = P.aviso; else $("p-aviso").remove(); $("p-rod").textContent = P.rodape;
+  $("p-lista").innerHTML = P.itens.map(p => `<div class="plano toque${p.destaque ? " dest" : ""}">${p.destaque ? `<span class="tag">${esc(p.destaque)}</span>` : ""}
+      <h3>${esc(p.nome)}</h3><div class="preco">${esc(p.preco)}</div><div class="per">${esc(p.periodo)}</div>
+      <ul>${p.inclui.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");
+
+  const G = C.galeria;
+  $("g-titulo").textContent = G.titulo; $("g-texto").textContent = G.texto;
+  $("g-lista").innerHTML = G.fotos.map((f, i) => `<figure data-i="${i}">${foto(f.img, f.legenda, 800, 1000)}</figure>`).join("");
+
+  const PR = C.professor;
+  $("pr-titulo").textContent = PR.titulo;
+  $("pr-foto").innerHTML = foto(PR.foto, PR.legendaFoto, 800, 1000);
+  $("pr-texto").innerHTML = `<h3>${esc(PR.nome)}</h3><div class="cargo">${esc(PR.cargo)}</div><p>${esc(PR.texto)}</p>
+    <dl>${PR.fatos.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
+
+  const K = C.contato;
+  $("c-titulo").textContent = K.titulo;
+  $("c-info").innerHTML = `<a class="end" href="${MAPS}" target="_blank" rel="noopener">${esc(K.endereco)}</a>${K.referencia ? `<p class="ref">${esc(K.referencia)}</p>` : ""}${K.google ? `<p class="google">${esc(K.google)}</p>` : ""}
+    <div class="horas">${K.horario.map(([d,h]) => `<div><span>${esc(d)}</span><b>${esc(h)}</b></div>`).join("")}</div>`;
+  const mapSrc = C.mapsEmbed || `https://www.google.com/maps?q=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}&z=15&output=embed`;
+  $("c-mapa").innerHTML = `<iframe src="${esc(mapSrc)}" loading="lazy" title="Mapa"></iframe>`;
+  $("c-faq").innerHTML = `<h3>${esc(K.faqTitulo)}</h3>` + K.faq.map(f => `<details><summary>${esc(f.p)}</summary><p>${esc(f.r)}</p></details>`).join("");
+  $("rodape").textContent = C.rodape;
+
+  const I = {
+    wa:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 .1 5.3.1 11.9c0 2.1.5 4.2 1.6 6L0 24l6.3-1.6c1.8 1 3.8 1.5 5.7 1.5 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.5z"/></svg>',
+    tel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+    menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>'
+  };
+  document.querySelectorAll("svg[data-i]").forEach(s => s.outerHTML = I[s.dataset.i]);
+  document.querySelectorAll(".js-wa").forEach(a => a.href = WA);
+  document.querySelectorAll(".js-tel").forEach(a => a.href = TEL);
+
+  /* header: transparente na foto, sólido ao rolar */
+  const hdr = $("hdr");
+  const atualizaHdr = () => hdr.classList.toggle("solido", scrollY > 40);
+  addEventListener("scroll", atualizaHdr, { passive: true }); atualizaHdr();
+
+  /* menu: painel de baixo pra cima */
+  const abre = v => document.body.classList.toggle("menu-aberto", v);
+  $("abrir-menu").onclick = () => abre(true);
+  $("fechar-menu").onclick = $("veu").onclick = () => abre(false);
+  $("menu-mob").addEventListener("click", e => { if (e.target.closest("a")) abre(false); });
+
+  /* toque nos cards de plano/professor: marca enquanto o dedo está em cima */
+  document.querySelectorAll(".toque").forEach(el => {
+    el.addEventListener("touchstart", () => el.classList.add("tocado"), { passive: true });
+    ["touchend", "touchcancel"].forEach(ev => el.addEventListener(ev, () => setTimeout(() => el.classList.remove("tocado"), 250), { passive: true }));
+  });
+
+  /* FAQ: um aberto por vez */
+  document.querySelectorAll(".faq details").forEach(d => d.addEventListener("toggle", () => {
+    if (d.open) document.querySelectorAll(".faq details").forEach(o => o !== d && (o.open = false));
+  }));
+
+  /* galeria: tela cheia, fecha no X, no Esc ou arrastando pra baixo */
+  const lb = $("lb"), lbc = $("lb-c");
+  const abreFoto = i => { const g = G.fotos[i]; lbc.innerHTML = g.img ? img(g.img, g.legenda, 1200, 1500, true, "100vw") : ph(g.legenda); $("lb-leg").textContent = g.legenda; lb.classList.add("on"); document.body.style.overflow = "hidden"; };
+  const fechaFoto = () => { lb.classList.remove("on"); lbc.style.transform = ""; lbc.style.opacity = ""; document.body.style.overflow = ""; };
+  $("g-lista").addEventListener("click", e => { const fig = e.target.closest("figure"); if (fig) abreFoto(+fig.dataset.i); });
+  $("lb-x").onclick = fechaFoto;
+  addEventListener("keydown", e => { if (e.key === "Escape") { fechaFoto(); abre(false); } });
+  let y0 = null;
+  lb.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; }, { passive: true });
+  lb.addEventListener("touchmove", e => { if (y0 === null) return; const dy = Math.max(0, e.touches[0].clientY - y0); lbc.style.transform = `translateY(${dy}px)`; lbc.style.opacity = 1 - dy / 400; }, { passive: true });
+  lb.addEventListener("touchend", e => { if (y0 === null) return; const dy = e.changedTouches[0].clientY - y0; y0 = null; if (dy > 90) fechaFoto(); else { lbc.style.transform = ""; lbc.style.opacity = ""; } });
+
+  /* aparecer ao rolar, uma vez só */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

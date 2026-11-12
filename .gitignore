@@ -1,0 +1,11 @@
+!.env.example
+*.log
+.DS_Store
+.env
+.env.*
+.netlify/
+CLAUDE.md
+RECEITA-CLIENTE.md
+__pycache__/
+dist/
+node_modules/
