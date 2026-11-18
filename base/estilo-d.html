@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- SEO-ESTATICO -->
+<title>[NOME] | Jiu-jitsu, muay thai e boxe em [BAIRRO], [CIDADE]</title>
+<!-- /SEO-ESTATICO -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Familjen+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script>
+/* ESTILO D: "Jornada". Mesmo CONFIG do estilo C (troca só estilo:"d") + animação de rolagem
+   portada do Além do Jiu Jitsu: letras do título subindo, hero que afunda, manifesto fixo que acende
+   palavra por palavra, tira diagonal entre seções, cor que muda a cada seção (jornada), modalidades
+   andando pro lado no computador, cards que inclinam com o mouse, fotos duotone na cor da seção.
+   Campos opcionais a mais: jornada ("jiu" | "karate" | "marca" | lista própria) e manifesto {texto, fotos}.
+   Sem GSAP (CDN fora) ou com movimento reduzido: tudo aparece parado, nada some. */
+const CONFIG = /*CONFIG-INICIO*/{
+  estilo: "d",
+  nome: "[NOME]",
+  complemento: "Artes Marciais",
+  nicho: "Academia de artes marciais",
+  whatsapp: "[WHATSAPP]",
+  telefone: "[WHATSAPP]",
+  cidade: "[CIDADE]",
+  bairro: "[BAIRRO]",
+  uf: "SP",
+  endereco: "[ENDERECO]",
+  pontoReferencia: "[PONTO_DE_REFERENCIA]",
+  mapsEmbed: "",
+  cor: "#1F4FA3",
+  corClara: "#9DB8F2",
+  fundo: "#F2F0EB",
+  tinta: "#1A1A1A",
+  jornada: "jiu",
+  mensagemWhatsApp: "Olá, vim pelo site e quero marcar uma aula experimental na {nome}.",
+  menu: [["#horarios", "Modalidades e horários"], ["#planos", "Planos"], ["#espaco", "O espaço"], ["#professor", "Professor"], ["#contato", "Onde fica"]],
+  seo: {
+    title: "[NOME] | Jiu-jitsu, muay thai e boxe em [BAIRRO], [CIDADE]",
+    description: "Academia de artes marciais em [BAIRRO], [CIDADE]. Jiu-jitsu, muay thai e boxe. Primeira aula grátis.",
+    ogImage: "https://images.unsplash.com/photo-1615117972428-28de67cda58e?w=1200&q=80"
+  },
+  hero: {
+    titulo: "Jiu-jitsu, muay thai e boxe em [BAIRRO].",
+    apoio: "Turmas de manhã e à noite. A primeira aula é grátis.",
+    botao: "Marcar aula experimental",
+    link2: ["#horarios", "Ver horários"],
+    chips: [
+      { nome: "Jiu-jitsu", img: "https://images.unsplash.com/photo-1615117972428-28de67cda58e", foco: "68% 55%", linha: "Seg, qua e sex às 6h30 e 19h." },
+      { nome: "Muay thai", img: "https://images.unsplash.com/photo-1517438322307-e67111335449", foco: "45% 40%", linha: "Ter e qui às 7h e 19h." },
+      { nome: "Boxe", img: "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b", foco: "62% 40%", linha: "Seg, qua e sex às 12h e 20h." }
+    ]
+  },
+  faixa: ["Jiu-jitsu", "Muay thai", "Boxe", "Turma kids"],
+  modalidades: {
+    titulo: "Modalidades e horários",
+    texto: "Toda turma mistura iniciante com graduado. O professor monta as duplas por tamanho e nível.",
+    itens: [
+      { nome: "Jiu-jitsu", publico: "Adulto, a partir de 15 anos", horarios: ["Seg, qua e sex: 6h30 e 19h"], desc: "Aquecimento, técnica da semana e rola no final.", img: "https://images.unsplash.com/photo-1615117972428-28de67cda58e?w=800&q=75" },
+      { nome: "Muay thai", publico: "Adulto, a partir de 14 anos", horarios: ["Ter e qui: 7h e 19h"], desc: "Chute, joelhada, cotovelada e clinch, no saco e na manopla.", img: "https://images.unsplash.com/photo-1517438322307-e67111335449?w=800&q=75" },
+      { nome: "Boxe", publico: "Adulto, a partir de 14 anos", horarios: ["Seg, qua e sex: 12h e 20h"], desc: "Base, jab, direto e esquiva, com muita corda e saco.", img: "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?w=800&q=75" }
+    ]
+  },
+  planos: {
+    titulo: "Planos",
+    texto: "Matrícula de [PRECO_MATRICULA]. O plano mensal não tem fidelidade.",
+    itens: [
+      { nome: "2x por semana", preco: "[PRECO_PLANO_2X]", periodo: "por mês", inclui: ["1 modalidade", "Qualquer horário da grade"] },
+      { nome: "Livre", preco: "[PRECO_PLANO_LIVRE]", periodo: "por mês", inclui: ["Todas as modalidades", "Quantas aulas quiser"], destaque: "Mais escolhido" },
+      { nome: "Kids", preco: "[PRECO_PLANO_KIDS]", periodo: "por mês", inclui: ["2 aulas por semana"] }
+    ],
+    rodape: "Aceitamos Pix, cartão de crédito e débito."
+  },
+  galeria: {
+    titulo: "O espaço",
+    texto: "Tatame, sacos de pancada e vestiário com chuveiro.",
+    fotos: [
+      { img: "", legenda: "Tatame com a turma da noite" },
+      { img: "", legenda: "Área dos sacos de pancada" },
+      { img: "", legenda: "Fachada vista da rua" }
+    ]
+  },
+  professor: {
+    titulo: "Quem dá aula",
+    nome: "[NOME_PROFESSOR]",
+    cargo: "Faixa preta de jiu-jitsu",
+    texto: "Treina há [ANOS_DE_TREINO] anos e dá aula em [BAIRRO] desde [ANO_INICIO].",
+    foto: "",
+    legendaFoto: "Professor no tatame, de kimono",
+    fatos: [["Graduação", "Faixa preta"], ["Na academia desde", "[ANO_INICIO]"]]
+  },
+  contato: {
+    titulo: "Onde fica",
+    endereco: "[ENDERECO], [BAIRRO], [CIDADE]",
+    referencia: "",
+    google: "",
+    horario: [["Segunda a sexta", "6h às 22h"], ["Sábado", "9h às 13h"], ["Domingo", "Fechado"]],
+    faqTitulo: "Perguntas de aluno novo",
+    faq: [{ p: "Nunca treinei. Posso entrar em qualquer turma?", r: "Pode. Na primeira semana o professor coloca você com um aluno mais graduado." }]
+  },
+  rodape: "[NOME], academia de artes marciais em [BAIRRO], [CIDADE]."
+}/*CONFIG-FIM*/;
+</script>
+
+<style>
+:root{--cor:#1F4FA3;--cor-clara:#9DB8F2;--fundo:#F2F0EB;--tinta:#1A1A1A;--escuro:#141110;
+  --cond:"Big Shoulders Display",Impact,sans-serif;--txt:"Familjen Grotesk",system-ui,sans-serif;--wrap:1160px;
+  --barra:calc(76px + env(safe-area-inset-bottom));
+  --texto:var(--tinta);--suave:#57544E;--linha:#D8D4CB;--destaque:var(--cor);--card:#FFFFFF;--ph:#D9D6CF;--ph-txt:#6E6A62;
+  --cor-txt:#fff;--sec:#efe9de;--trilho:#efe9de}
+.cor-txt-escuro .s-cor{--texto:var(--cor-txt);--suave:rgba(0,0,0,.72);--linha:rgba(0,0,0,.2);--destaque:var(--cor-txt);--ph:rgba(0,0,0,.1);--ph-txt:rgba(0,0,0,.7)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:60px;overflow-x:clip}
+html:not(.lenis){scroll-behavior:smooth}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--txt);background:var(--fundo);color:var(--texto);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip;padding-bottom:var(--barra)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px;position:relative;z-index:1}
+h1,h2,h3{overflow-wrap:break-word;font-family:var(--cond);font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.005em}
+h2{font-size:clamp(2.6rem,11vw,3.4rem);margin-bottom:14px}
+.intro{color:var(--suave);max-width:60ch;margin-bottom:28px}
+.aviso{max-width:60ch;margin:-12px 0 28px;padding:10px 14px;border-left:3px solid var(--destaque);background:rgba(127,127,127,.1);font-size:.95rem;font-weight:600}
+
+section{padding:0 0 72px;position:relative;color:var(--texto)}
+.s-escuro{background:var(--escuro);--texto:#F2EDE4;--suave:#B3AFA6;--linha:rgba(255,255,255,.13);--destaque:var(--sec);--card:#1D1A18;--ph:#2A2725;--ph-txt:#8F8B83}
+.s-claro{background:var(--fundo)}
+.s-cor{background:var(--cor);--texto:#FFFFFF;--suave:rgba(255,255,255,.82);--linha:rgba(255,255,255,.25);--destaque:#FFFFFF;--card:rgba(255,255,255,.06);--ph:rgba(255,255,255,.14);--ph-txt:rgba(255,255,255,.85)}
+.s-escuro::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* corte entre seções: tira diagonal na cor da etapa da jornada, entra varrendo com a rolagem */
+.corte{position:relative;height:104px;overflow:hidden;pointer-events:none}
+.corte .tira{position:absolute;left:-10%;top:50%;width:120%;height:40px;transform:translateY(-50%) rotate(-4deg);background:var(--tira,var(--sec));display:flex;align-items:center}
+.corte .tira span{position:absolute;left:12%;font-family:var(--cond);font-weight:900;text-transform:uppercase;letter-spacing:.32em;font-size:1.05rem;white-space:nowrap;color:var(--tira-txt,#141110)}
+.anima .corte .tira{clip-path:polygon(0 0,0 0,0 100%,0 100%)}
+
+/* trilho da jornada: tira fina na borda direita que troca de cor (e ganha graus) a cada seção */
+.trilho-j{position:fixed;right:0;top:96px;bottom:calc(var(--barra) + 24px);z-index:45;width:7px;display:flex;flex-direction:column;pointer-events:none}
+.trilho-j .tecido{flex:1;background:var(--trilho);box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 0 2px rgba(0,0,0,.12);transition:background .7s}
+.trilho-j .ponta{height:84px;display:flex;flex-direction:column;justify-content:center;gap:6px;background:#0b0a0a;transition:background .7s}
+.trilho-j .ponta i{display:block;height:4px;background:#efe9de}
+.trilho-j .fim{height:22px;background:var(--trilho);transition:background .7s}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:2px;font-weight:700;font-size:1rem;text-decoration:none;border:2px solid var(--cor);background:var(--cor);color:var(--cor-txt);transition:transform .1s,background .25s,color .25s;-webkit-tap-highlight-color:transparent}
+.btn:active,.barra a:active,.chip:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-claro{background:transparent;border-color:#fff;color:#fff}
+.btn-claro:hover{background:#fff;color:#141110}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:40;color:#fff;transition:background .25s,color .25s,border-color .25s;border-bottom:1px solid transparent}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;transition:height .2s}
+.hdr.solido{background:var(--fundo);color:var(--tinta);border-bottom-color:#D8D4CB}
+.hdr.solido .wrap{height:54px}
+.logo{font-family:var(--cond);font-weight:900;font-size:1.45rem;text-transform:uppercase;text-decoration:none;line-height:1;min-height:48px;display:flex;flex-direction:column;justify-content:center}
+.logo small{display:block;margin-top:4px;line-height:1.2;font-family:var(--txt);font-weight:600;font-size:.66rem;letter-spacing:.14em;opacity:.75}
+.wm{display:block;height:40px;width:auto;overflow:visible}
+.wm text{font-family:var(--cond);font-weight:900;text-transform:uppercase}
+.wm .t1o{fill:#0B0B0B;stroke:#0B0B0B;stroke-width:14;stroke-linejoin:round}
+.wm .t1{fill:var(--m1);stroke:var(--m2);stroke-width:3.5;paint-order:stroke;stroke-linejoin:round}
+.wm .t2o{fill:#0B0B0B;stroke:#0B0B0B;stroke-width:6;stroke-linejoin:round;text-anchor:middle;letter-spacing:.3em;font-weight:800}
+.wm .t2{fill:var(--m2);text-anchor:middle;letter-spacing:.3em;font-weight:800}
+.logo.com-img{flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;font-size:1.15rem}
+.logo .wm-img{height:44px;width:auto}
+.marca-hero .wm-img{display:block;height:auto;width:min(100%,calc(140px * var(--prop,1)));filter:drop-shadow(0 1px 2px rgba(0,0,0,.7)) drop-shadow(0 0 10px rgba(0,0,0,.35))}
+@media (max-height:700px){.marca-hero .wm-img{width:min(85%,calc(100px * var(--prop,1)))}}
+.marca-hero{margin-bottom:14px}
+.marca-hero .wm{height:96px}
+.marca-no-hero .hdr:not(.solido) .logo{visibility:hidden}
+.menu-desk,.hdr .btn{display:none}
+.menu-desk{gap:24px;font-weight:600;font-size:.95rem}
+.menu-desk a{text-decoration:none}
+.btn-menu{width:48px;height:48px;display:grid;place-items:center;margin-right:-10px}
+.btn-menu svg{width:26px;height:26px}
+.veu{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--fundo);color:var(--tinta);border-radius:6px 6px 0 0;padding:8px 20px calc(20px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s}
+.menu-aberto .veu{opacity:1;pointer-events:auto}
+.menu-aberto .sheet{transform:none}
+.sheet .topo{display:flex;justify-content:space-between;align-items:center;min-height:56px;font-weight:700;color:#57544E}
+.sheet .topo button{width:48px;height:48px;font-size:28px;margin-right:-10px}
+.sheet nav a{display:flex;align-items:center;min-height:58px;border-top:1px solid #D8D4CB;font-family:var(--cond);font-weight:900;font-size:1.7rem;text-transform:uppercase;text-decoration:none}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;padding:0;display:flex;align-items:flex-end;color:#fff;background:var(--escuro);overflow:hidden}
+.hero-foto{position:absolute;inset:0;will-change:transform}
+.hero-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s ease}
+.hero-foto img.on{opacity:1}
+.hero-sombra{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,7,.82) 0%,rgba(10,8,7,.5) 45%,rgba(10,8,7,0) 78%),linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 110px)}
+.hero .wrap{width:100%;padding-bottom:calc(var(--barra) + 20px)}
+.hero h1{font-size:clamp(3rem,13.5vw,4.1rem);margin-bottom:14px;max-width:13ch;line-height:.86}
+/* máscara das palavras: folga em cima pro acento de maiúscula (Á, Ê) não ser cortado */
+.palavra-h{display:inline-block;overflow:hidden;vertical-align:top;padding:.24em .02em 0;margin:-.24em 0 0}
+.lw{display:inline-block}
+.letra{display:inline-block;transition:transform .5s cubic-bezier(.22,1.4,.36,1),color .3s}
+@media (hover:hover){.letra:hover{transform:scaleY(1.14) skewX(-9deg) translateY(-2%);color:var(--cor-clara)}}
+.hero .apoio{font-size:1.06rem;max-width:40ch;margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:0 16px;border-radius:2px;border:1.5px solid rgba(255,255,255,.6);font-weight:700;font-size:1rem;transition:background .2s,color .2s,transform .1s}
+.chip[aria-pressed="true"]{background:#fff;color:#141110;border-color:#fff}
+.linha-chip{margin-top:12px;font-size:.98rem;color:rgba(255,255,255,.88);min-height:3em}
+.hero .acoes{display:none}
+.hero-role{display:none}
+
+/* faixa rolando */
+.faixa{background:var(--cor);color:var(--cor-txt);overflow:hidden;padding:14px 0;position:relative;z-index:2}
+.faixa-trilho{display:flex;width:max-content;animation:faixa 45s linear infinite}
+.faixa span{font-family:var(--cond);font-weight:900;font-size:1.5rem;text-transform:uppercase;letter-spacing:.05em;padding:0 22px;white-space:nowrap}
+.faixa span+span::before{content:"/";margin-right:44px;opacity:.5}
+@keyframes faixa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* duotone: a foto vira luminância e pega a cor da etapa da seção */
+.duo{position:relative;overflow:hidden;background:var(--sec);isolation:isolate}
+.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.45) brightness(.76);mix-blend-mode:luminosity;transition:filter .5s}
+.duo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,17,15,.75));mix-blend-mode:multiply;pointer-events:none}
+@media (hover:hover){.duo:hover img{filter:none;mix-blend-mode:normal}}
+
+.ph{background:var(--ph);color:var(--ph-txt);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:16px;width:100%;height:100%;position:relative;z-index:1}
+.ph b{font-family:var(--cond);font-size:1.15rem;letter-spacing:.06em}
+.ph span{font-size:.9rem}
+
+/* manifesto: fixa na tela, o texto acende palavra por palavra e as fotos entram com máscara */
+.mf-pin{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:24px 0}
+.mf-grid{display:grid;gap:32px;width:100%}
+.mf-texto{font-size:clamp(1.55rem,6.4vw,2rem);font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.anima .mf-texto .pal{opacity:.16}
+.mf-fotos{position:relative}
+.mf-f1{aspect-ratio:4/5;width:100%}
+.mf-f2{display:none}
+.mf-vert{display:none}
+.mf-baixo{padding-top:24px}
+
+/* carrossel */
+.trilho{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 6px;scroll-padding:0 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>*{flex:0 0 84%;scroll-snap-align:start}
+.dica{font-size:.92rem;color:var(--suave);margin-top:12px}
+
+/* cards de modalidade (inclinam com o mouse no computador) */
+.inclina{perspective:1100px}
+.card{background:var(--card);border:1px solid var(--linha);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;position:relative;transform-style:preserve-3d;transition:transform .18s ease-out}
+.card .brilho{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(closest-side,rgba(255,255,255,.55),transparent);width:60%;left:var(--bx,50%);transform:translateX(-50%);mix-blend-mode:soft-light;z-index:2}
+.card:hover .brilho{opacity:1}
+.card .num{position:absolute;top:10px;right:14px;z-index:3;font-family:var(--cond);font-weight:900;font-size:3.4rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px #fff;transform:translateZ(40px)}
+.card .foto{aspect-ratio:3/2;background:var(--ph);overflow:hidden}
+.card .foto img{width:100%;height:100%;object-fit:cover}
+.card .bd{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1;transform:translateZ(30px)}
+.card .marca-cor{display:block;width:48px;height:6px;background:var(--tira,var(--cor))}
+.card h3{font-size:2rem}
+.card .pub{font-weight:700;color:var(--destaque);font-size:.95rem}
+.card p{color:var(--suave);font-size:1rem}
+.card ul{list-style:none;margin-top:auto;border-top:2px solid var(--texto)}
+.card li{padding:9px 0;border-bottom:1px solid var(--linha);font-weight:600;font-size:.98rem}
+.card li:last-child{border:0}
+
+.toque{transition:border-color .25s}
+.toque .zoom img{transition:transform .35s ease}
+.toque:hover,.toque:active,.toque.tocado{border-color:var(--cor)}
+.toque:hover .zoom img,.toque:active .zoom img,.toque.tocado .zoom img{transform:scale(1.04)}
+
+/* planos */
+.planos{display:grid;gap:24px}
+.plano{min-width:0;overflow-wrap:anywhere;background:var(--card);border:2px solid var(--linha);border-radius:2px;padding:24px 20px;position:relative}
+.plano.dest{border-color:var(--destaque)}
+.plano .tag{position:absolute;top:-2px;right:14px;background:var(--tira,#fff);color:var(--tira-txt,#141110);font-size:.75rem;font-weight:700;padding:4px 8px;text-transform:uppercase;letter-spacing:.06em}
+.plano h3{font-size:1.7rem}
+.plano .preco{font-family:var(--cond);font-weight:900;font-size:3rem;margin:8px 0 0;line-height:1}
+.plano .per{color:var(--suave);font-size:.95rem;margin-bottom:12px}
+.plano ul{list-style:none;border-top:1px solid var(--linha)}
+.plano li{padding:9px 0;border-bottom:1px solid var(--linha)}
+.planos-rod{margin-top:24px;color:var(--suave);max-width:70ch}
+
+.gal figure{aspect-ratio:4/5;border-radius:2px;overflow:hidden;cursor:zoom-in}
+.gal figure img{width:100%;height:100%;object-fit:cover}
+
+.prof{display:grid;gap:24px;background:var(--card);border:2px solid var(--linha);border-radius:2px;padding:20px}
+.prof .foto{aspect-ratio:4/5;overflow:hidden}
+.prof .foto img{width:100%;height:100%;object-fit:cover}
+.prof h3{font-size:2.3rem}
+.prof .cargo{color:var(--destaque);font-weight:700;margin:4px 0 12px}
+.prof dl{margin-top:20px;border-top:2px solid var(--texto)}
+.prof dl div{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha)}
+.prof dt{font-weight:700}
+
+.lb{position:fixed;inset:0;z-index:70;background:rgba(10,10,10,.94);display:none;align-items:center;justify-content:center;padding:64px 16px calc(24px + env(safe-area-inset-bottom));touch-action:none;color:#fff}
+.lb.on{display:flex}
+.lb .conteudo{width:100%;max-width:900px;max-height:100%;aspect-ratio:4/5;transition:transform .2s,opacity .2s;--ph:#2A2A2A;--ph-txt:#aaa}
+.lb .conteudo img{width:100%;height:100%;object-fit:contain}
+.lb .x{position:absolute;top:calc(8px + env(safe-area-inset-top));right:8px;width:48px;height:48px;color:#fff;font-size:34px;line-height:1}
+.lb .leg{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));text-align:center;color:#ddd;font-size:.95rem;padding:0 20px}
+
+.cont{display:grid;gap:24px}
+.mapa{border:1px solid var(--linha);overflow:hidden;height:260px}
+.mapa iframe{width:100%;height:100%;border:0;display:block}
+.end{display:inline-flex;align-items:center;min-height:48px;font-size:1.1rem;font-weight:700;color:var(--destaque);text-underline-offset:3px}
+.ref{color:var(--suave);margin:0 0 6px}
+.google{font-weight:600;margin-bottom:20px}
+.horas{border-top:2px solid var(--texto)}
+.horas div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha)}
+.faq{margin-top:48px}
+.faq h3{font-size:1.9rem;margin-bottom:12px}
+.faq details{border-bottom:1px solid var(--linha)}
+.faq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;font-weight:700;-webkit-tap-highlight-color:transparent}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;font-weight:400;flex:none;width:24px;text-align:center}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 0 16px;color:var(--suave);max-width:70ch}
+
+/* marquee grande do rodapé */
+.marq{overflow:hidden;background:var(--escuro);color:var(--sec);padding:18px 0 6px;border-top:1px solid rgba(255,255,255,.08)}
+.marq .faixa-trilho{animation-duration:60s}
+.marq span{font-family:var(--cond);font-weight:900;font-size:clamp(3.2rem,16vw,9rem);text-transform:uppercase;line-height:1;padding:0 .35em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px currentColor}
+footer{background:var(--escuro);color:#8F8B83;padding:22px 0 28px;font-size:.95rem}
+
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 20px calc(10px + env(safe-area-inset-bottom));background:var(--fundo);border-top:1px solid #D8D4CB}
+.barra a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:2px;font-weight:700;text-decoration:none;border:2px solid var(--tinta);color:var(--tinta);transition:transform .1s;-webkit-tap-highlight-color:transparent}
+.barra a svg{width:20px;height:20px}
+.barra .wa{background:#1F8F4E;border-color:#1F8F4E;color:#fff}
+
+/* sem GSAP: aparecer simples ao rolar (mesmo do estilo C) */
+.js:not(.anima) .rv{opacity:0;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease}
+.js:not(.anima) .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .rv{opacity:1!important;transform:none!important}
+}
+
+@media (min-width:700px){
+  .trilho>*{flex-basis:46%}
+  .planos{grid-template-columns:repeat(3,1fr)}
+  .prof{grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start;padding:28px}
+}
+@media (min-width:980px){
+  body{padding-bottom:0}
+  .barra,.btn-menu,.dica{display:none}
+  .menu-desk{display:flex}
+  .hdr .btn{display:inline-flex;min-height:44px}
+  .trilho-j{bottom:96px}
+  h2{font-size:clamp(3.4rem,6vw,5.6rem)}
+  section{padding:0 0 112px}
+  .corte{height:160px}
+  .corte .tira{height:56px}
+  .corte .tira span{font-size:1.4rem}
+  .hero{min-height:100vh}
+  .hero .wrap{padding-bottom:72px;padding-top:110px}
+  .hero h1{font-size:clamp(4rem,6.4vw,7rem);max-width:15ch}
+  .marca-hero .wm{height:110px}
+  .hdr .wm{height:44px}
+  .hero .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .hero-role{display:block;position:absolute;right:40px;bottom:40px;transform-origin:bottom right;transform:rotate(90deg) translateX(100%);font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.4em;font-size:.85rem;color:rgba(255,255,255,.55)}
+  .trilho{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0;gap:24px}
+  .cont{grid-template-columns:1fr 1fr;gap:48px}
+  .mapa{height:100%;min-height:340px}
+  .mf-grid{grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}
+  .mf-texto{font-size:clamp(2rem,2.7vw,2.9rem)}
+  .mf-fotos{height:72vh}
+  .mf-f1{position:absolute;right:0;top:0;width:78%;height:82%;aspect-ratio:auto}
+  .mf-f2{display:block;position:absolute;left:0;bottom:0;width:46%;height:46%;box-shadow:0 0 0 10px var(--escuro)}
+  .mf-vert{display:block;position:absolute;right:-10px;bottom:6%;writing-mode:vertical-rl;font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:4.6vw;line-height:1;color:var(--sec)}
+  /* modalidades andando pro lado: a seção fixa e o trilho corre na horizontal */
+  .horiz .h-pin{height:100vh;display:flex;align-items:center;overflow:hidden}
+  .horiz .h-trilho{display:flex;align-items:stretch;gap:40px;padding:0 10vw 0 max(20px,calc((100vw - var(--wrap))/2 + 20px));width:max-content}
+  .horiz .h-intro{width:34vw;flex:none;align-self:center}
+  .horiz .h-trilho .inclina{width:min(30vw,420px);flex:none;display:flex}
+  .horiz .h-trilho .card{width:100%}
+  .horiz .dica-h{display:block}
+}
+.dica-h{display:none;margin-top:18px;font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.3em;font-size:.85rem;color:var(--suave)}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#topo" id="logo"></a>
+  <nav class="menu-desk" id="menu-desk"></nav>
+  <a class="btn js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span>WhatsApp</span></a>
+  <button class="btn-menu" id="abrir-menu" aria-label="Abrir menu"><svg data-i="menu"></svg></button>
+</div></header>
+
+<div class="trilho-j" aria-hidden="true"><div class="tecido"></div><div class="ponta" id="tj-ponta"></div><div class="fim"></div></div>
+
+<div class="veu" id="veu"></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Menu">
+  <div class="topo"><span>Menu</span><button id="fechar-menu" aria-label="Fechar menu">×</button></div>
+  <nav id="menu-mob"></nav>
+</div>
+
+<main>
+  <section class="hero etapa" id="topo">
+    <div class="hero-foto" id="h-fotos"></div>
+    <div class="hero-sombra"></div>
+    <div class="wrap hero-conteudo">
+      <div class="marca-hero" id="h-marca"></div>
+      <h1 id="h1"></h1>
+      <div class="hero-sub">
+        <p class="apoio" id="h-apoio"></p>
+        <div class="chips" id="h-chips" role="group" aria-label="Modalidades"></div>
+        <p class="linha-chip" id="h-linha" aria-live="polite"></p>
+        <div class="acoes">
+          <a class="btn js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span id="h-botao"></span></a>
+          <a class="btn btn-claro" id="h-link2"></a>
+        </div>
+      </div>
+    </div>
+    <span class="hero-role" aria-hidden="true">Role a página</span>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
+
+  <section class="s-escuro etapa" id="espaco">
+    <div class="corte" aria-hidden="true"><div class="tira"><span></span></div></div>
+    <div class="mf-pin" id="mf-pin"><div class="wrap" style="width:100%"><div class="mf-grid">
+      <p class="mf-texto" id="mf-texto"></p>
+      <div class="mf-fotos">
+        <div class="duo mf-f1" id="mf-f1"></div>
+        <div class="duo mf-f2" id="mf-f2"></div>
+        <span class="mf-vert" id="mf-vert"></span>
+      </div>
+    </div></div></div>
+    <div class="wrap mf-baixo">
+      <h2 class="rv tit" id="g-titulo"></h2><p class="intro rv" id="g-texto"></p>
+      <div class="trilho gal rv" id="g-lista"></div>
+      <p class="dica">Toque na foto pra ampliar.</p>
+    </div>
+  </section>
+
+  <section class="s-claro etapa" id="horarios">
+    <div class="corte" aria-hidden="true"><div class="tira"><span></span></div></div>
+    <div class="h-pin"><div class="h-trilho wrap" id="h-trilho">
+      <div class="h-intro">
+        <h2 class="rv tit" id="m-titulo"></h2><p class="intro rv" id="m-texto"></p><p class="aviso rv" id="m-aviso"></p>
+        <p class="dica-h">Role pra ver todas</p>
+      </div>
+      <div class="trilho rv" id="m-lista"></div>
+    </div></div>
+    <div class="wrap"><p class="dica" id="m-dica">Arraste pro lado pra ver todos.</p></div>
+  </section>
+
+  <section class="s-cor etapa" id="planos">
+    <div class="corte" aria-hidden="true"><div class="tira"><span></span></div></div>
+    <div class="wrap">
+      <h2 class="rv tit" id="p-titulo"></h2><p class="intro rv" id="p-texto"></p><p class="aviso rv" id="p-aviso"></p>
+      <div class="planos rv" id="p-lista"></div>
+      <p class="planos-rod" id="p-rod"></p>
+    </div>
+  </section>
+
+  <section class="s-claro etapa" id="professor">
+    <div class="corte" aria-hidden="true"><div class="tira"><span></span></div></div>
+    <div class="wrap">
+      <h2 class="rv tit" id="pr-titulo"></h2>
+      <div class="prof toque rv">
+        <div class="foto zoom" id="pr-foto"></div>
+        <div id="pr-texto"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-escuro etapa" id="contato">
+    <div class="corte" aria-hidden="true"><div class="tira"><span></span></div></div>
+    <div class="wrap">
+      <h2 class="rv tit" id="c-titulo"></h2>
+      <div class="cont rv">
+        <div id="c-info"></div>
+        <div class="mapa" id="c-mapa"></div>
+      </div>
+      <div class="faq rv" id="c-faq"></div>
+    </div>
+  </section>
+</main>
+
+<div class="marq" aria-hidden="true"><div class="faixa-trilho" id="marq"></div></div>
+<footer><div class="wrap" id="rodape"></div></footer>
+
+<div class="barra" id="barra">
+  <a class="js-tel"><svg data-i="tel"></svg><span>Ligar</span></a>
+  <a class="wa js-wa" target="_blank" rel="noopener"><svg data-i="wa"></svg><span>WhatsApp</span></a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-label="Foto ampliada">
+  <button class="x" id="lb-x" aria-label="Fechar">×</button>
+  <div class="conteudo" id="lb-c"></div>
+  <div class="leg" id="lb-leg"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  const C = CONFIG, $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const num = s => String(s || "").replace(/\D/g, "");
+  const WA = C.whatsappLink || `https://wa.me/55${num(C.whatsapp)}?text=${encodeURIComponent(C.mensagemWhatsApp.replace(/\{nome\}/g, C.nome))}`;
+  const TEL = `tel:+55${num(C.telefone)}`;
+  const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}`;
+
+  const img = (src, alt, w, h, eager, sizes) => {
+    if (!/unsplash\.com/.test(src)) return `<img src="${esc(src)}" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+    const base = src.split("?")[0], u = n => `${base}?w=${n}&q=70&auto=format`;
+    return `<img src="${u(800)}" srcset="${u(480)} 480w, ${u(800)} 800w, ${u(1200)} 1200w, ${u(1800)} 1800w" sizes="${sizes || "(min-width:980px) 33vw, 85vw"}" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  };
+  const ph = legenda => `<div class="ph"><b>FOTO REAL DO CLIENTE</b><span>${esc(legenda)}</span></div>`;
+  const foto = (src, legenda, w, h, eager) => src ? img(src, legenda, w, h, eager) : ph(legenda);
+
+  const r = document.documentElement.style;
+  r.setProperty("--cor", C.cor); r.setProperty("--cor-clara", C.corClara); r.setProperty("--fundo", C.fundo); r.setProperty("--tinta", C.tinta);
+  if (C.corTexto) { r.setProperty("--cor-txt", C.corTexto); r.setProperty("--destaque", C.tinta); document.documentElement.classList.add("cor-txt-escuro"); }
+
+  /* ---------- jornada de cor: uma etapa por seção (hero + 5) ---------- */
+  const hex = h => { h = h.replace("#", ""); if (h.length === 3) h = h.replace(/./g, "$&$&"); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+  const toHex = a => "#" + a.map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, "0")).join("");
+  const mix = (a, b, t) => toHex(hex(a).map((v, i) => v + (hex(b)[i] - v) * t));
+  const lum = c => { const [R, G, B] = hex(c).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * R + .7152 * G + .0722 * B; };
+  const contraste = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const PRESETS = {
+    jiu: [["Faixa branca", "#efe9de", "#efe9de", 0], ["Faixa azul", "#1d4fbf", "#5b8cff", 1], ["Faixa roxa", "#5d2a91", "#b285f0", 2], ["Faixa marrom", "#5e3a1f", "#d39a62", 3], ["Faixa preta", "#121010", "#e0453a", 4], ["Faixa preta", "#121010", "#e0453a", 4]],
+    karate: [["Faixa branca", "#efe9de", "#efe9de", 0], ["Faixa amarela", "#d9a400", "#f2c230", 0], ["Faixa laranja", "#d9640f", "#f08a24", 0], ["Faixa verde", "#1f7a3a", "#4fbf6c", 0], ["Faixa marrom", "#5e3a1f", "#d39a62", 0], ["Faixa preta", "#121010", "#e0453a", 1]]
+  };
+  const titulos = [C.nome, C.galeria.titulo, C.modalidades.titulo, C.planos.titulo, C.professor.titulo, C.contato.titulo];
+  let tipo = C.jornada;
+  if (!tipo) { const n = (C.nicho + " " + C.complemento).toLowerCase(); tipo = /jiu/.test(n) ? "jiu" : /karat/.test(n) ? "karate" : "marca"; }
+  let J = Array.isArray(tipo) ? tipo.map(e => [e.nome, e.tecido, e.acento || e.tecido, e.graus || 0]) : PRESETS[tipo];
+  if (!J) {
+    const cl = C.corClara, base = lum(C.cor) > .35 ? mix(C.cor, "#000", .35) : C.cor;
+    J = [["", "#efe9de", "#efe9de", 0], ["", base, cl, 0], ["", mix(base, cl, .3), mix(cl, "#fff", .25), 0], ["", base, cl, 0], ["", mix(base, "#000", .3), mix(cl, "#fff", .4), 0], ["", base, cl, 0]];
+    J = J.map((e, i) => [titulos[i], e[1], e[2], 0]);
+  }
+  const etapas = [...document.querySelectorAll(".etapa")];
+  const fundoDe = el => {
+    const m = getComputedStyle(el).backgroundColor.match(/\d+/g);
+    return m ? toHex(m.slice(0, 3).map(Number)) : "#141110";
+  };
+  etapas.forEach((el, i) => {
+    const [nome, tecido, acento, graus] = J[Math.min(i, J.length - 1)];
+    el.dataset.e = i;
+    const bg = el.classList.contains("hero") ? "#141110" : fundoDe(el);
+    /* tira e destaques: escolhe entre tecido e acento o que aparece mais no fundo da seção */
+    const tira = contraste(acento, bg) >= contraste(tecido, bg) ? acento : tecido;
+    el.style.setProperty("--tira", tira);
+    el.style.setProperty("--tira-txt", lum(tira) > .32 ? "#141110" : "#F2EDE4");
+    if (el.classList.contains("s-escuro")) el.style.setProperty("--sec", acento);
+    const sp = el.querySelector(".corte span");
+    if (sp) sp.textContent = nome + (graus ? `, ${graus} ${graus > 1 ? "graus" : "grau"}` : "");
+  });
+  const trilhoJ = n => {
+    const [, tecido, acento, graus] = J[Math.min(n, J.length - 1)];
+    r.setProperty("--trilho", tecido);
+    $("tj-ponta").style.background = /preta/i.test(J[Math.min(n, J.length - 1)][0]) ? "#b3261e" : "#0b0a0a";
+    $("tj-ponta").innerHTML = "<i></i>".repeat(graus);
+    r.setProperty("--sec-atual", acento);
+  };
+  trilhoJ(0);
+
+  /* ---------- conteúdo ---------- */
+  document.title = C.seo.title;
+  const ld = document.createElement("script"); ld.type = "application/ld+json";
+  /* tipo pro Google: CONFIG.tipoSchema, senão academia/luta = SportsActivityLocation e o resto = LocalBusiness */
+  const tipoSchema = C.tipoSchema || (/academia|luta|jiu|karat|muay|boxe|dojo|taekwondo|kung|krav|hapkido|mma/i.test(C.nicho + " " + C.complemento) ? "SportsActivityLocation" : "LocalBusiness");
+  ld.textContent = JSON.stringify({"@context":"https://schema.org","@type":tipoSchema,name:C.nome,description:C.seo.description,image:C.seo.ogImage,
+    ...(C.semTelefone ? {} : {telephone:"+55"+num(C.telefone)}),address:{"@type":"PostalAddress",streetAddress:C.endereco,addressLocality:C.cidade,addressRegion:C.uf,addressCountry:"BR"}});
+  document.head.appendChild(ld);
+
+  const M0 = C.marca;
+  const marcaSVG = () => `<svg class="wm" role="img" aria-label="${esc(C.nome)}" style="--m1:${M0.preenchimento};--m2:${M0.contorno}"><g class="g">
+      <g transform="skewX(-10)"><text class="t1o" x="10" y="72" font-size="78">${esc(M0.linha1)}</text><text class="t1" x="10" y="72" font-size="78">${esc(M0.linha1)}</text></g>
+      <text class="t2o" x="0" y="104" font-size="19">${esc(M0.linha2)}</text><text class="t2" x="0" y="104" font-size="19">${esc(M0.linha2)}</text></g></svg>`;
+  const ajustaMarca = () => document.querySelectorAll(".wm").forEach(s => {
+    const b1 = s.querySelector(".t1").getBBox(), cx = b1.x + b1.width / 2 - 6;
+    s.querySelectorAll(".t2,.t2o").forEach(t => t.setAttribute("x", cx));
+    const b = s.querySelector(".g").getBBox(), p = 9;
+    s.setAttribute("viewBox", `${b.x - p} ${b.y - p} ${b.width + p * 2} ${b.height + p * 2}`);
+  });
+  if (M0 && M0.img) {
+    const prop = M0.prop || 1;
+    $("logo").classList.add("com-img");
+    $("logo").innerHTML = `<img class="wm-img" src="${M0.img}" alt="${M0.nomeNoHeader === false ? esc(C.nome) : ""}" width="${Math.round(44 * prop)}" height="44">` +
+      (M0.nomeNoHeader === false ? "" : `<span>${esc(C.nome)}<small>${esc(C.complemento)}</small></span>`);
+    if (M0.noHero) { $("h-marca").innerHTML = `<img class="wm-img" style="--prop:${prop}" src="${M0.imgClaro || M0.img}" alt="${esc(C.nome)}" width="${Math.round(160 * prop)}" height="160">`; document.body.classList.add("marca-no-hero"); } else $("h-marca").remove();
+  } else if (M0) {
+    $("logo").innerHTML = marcaSVG();
+    if (M0.noHero) { $("h-marca").innerHTML = marcaSVG(); document.body.classList.add("marca-no-hero"); } else $("h-marca").remove();
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(ajustaMarca);
+    ajustaMarca();
+  } else {
+    $("logo").innerHTML = `${esc(C.nome)}<small>${esc(C.complemento)}</small>`;
+    $("h-marca").remove();
+  }
+  const links = C.menu.map(([h,t]) => `<a href="${h}">${esc(t)}</a>`).join("");
+  $("menu-desk").innerHTML = links; $("menu-mob").innerHTML = links;
+
+  /* hero: título quebrado em palavras (máscara) e letras (sobem) */
+  const H = C.hero;
+  $("h1").setAttribute("aria-label", H.titulo);
+  $("h1").innerHTML = H.titulo.split(" ").map(p => `<span class="palavra-h" aria-hidden="true">${[...p].map(c => `<span class="lw"><span class="letra">${esc(c)}</span></span>`).join("")}</span>`).join(" ");
+  $("h-apoio").textContent = H.apoio;
+  $("h-botao").textContent = H.botao;
+  $("h-link2").href = H.link2[0]; $("h-link2").textContent = H.link2[1];
+  $("h-fotos").innerHTML = H.chips.map((c, i) => img(c.img, c.nome + " em " + C.bairro, 1200, 1600, i === 0, "100vw").replace("<img ", `<img data-i="${i}" style="object-position:${c.foco || "50% 50%"}" ${i === 0 ? 'class="on" ' : ""}`)).join("");
+  $("h-chips").innerHTML = H.chips.map((c, i) => `<button class="chip" data-i="${i}" aria-pressed="${i === 0}">${esc(c.nome)}</button>`).join("");
+  /* troca de foto: com animação, a nova entra por uma cortina diagonal por cima da antiga */
+  let atual = 0, giro = null;
+  const escolhe = i => {
+    const fotos = [...$("h-fotos").querySelectorAll("img")];
+    const nova = fotos[i], velha = fotos[atual];
+    const cortina = window.gsap && document.documentElement.classList.contains("anima") && i !== atual;
+    if (cortina) {
+      gsap.killTweensOf(fotos);
+      fotos.forEach(im => { if (im !== velha && im !== nova) { im.classList.remove("on"); im.style.zIndex = ""; } });
+      velha.style.zIndex = 1; nova.style.zIndex = 2; nova.style.transition = "none"; nova.classList.add("on");
+      gsap.fromTo(nova, { clipPath: "polygon(0 0, 0 0, -30% 100%, -30% 100%)", scale: 1.08 },
+        { clipPath: "polygon(0 0, 130% 0, 100% 100%, -30% 100%)", scale: 1, duration: .9, ease: "power3.inOut",
+          onComplete: () => { velha.classList.remove("on"); velha.style.zIndex = ""; nova.style.zIndex = ""; nova.style.clipPath = ""; nova.style.transition = ""; } });
+    } else fotos.forEach(im => im.classList.toggle("on", +im.dataset.i === i));
+    atual = i;
+    $("h-chips").querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === i));
+    $("h-linha").textContent = H.chips[i].linha;
+  };
+  $("h-chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; clearInterval(giro); giro = null; escolhe(+b.dataset.i); });
+  escolhe(0);
+
+  const f = C.faixa.map(t => `<span>${esc(t)}</span>`).join("");
+  $("faixa").innerHTML = f + f;
+  const mq = `<span>${esc(C.nome)}</span><span>${esc(C.cidade)}</span>`;
+  $("marq").innerHTML = mq + mq + mq + mq;
+
+  /* manifesto: texto próprio ou o apoio do hero + o texto das modalidades */
+  const MF = C.manifesto || {};
+  const usouTextoModalidades = !MF.texto;
+  const textoMF = MF.texto || `${H.apoio} ${C.modalidades.texto}`;
+  $("mf-texto").innerHTML = textoMF.split(" ").map(p => `<span class="pal">${esc(p)}</span>`).join(" ");
+  const G = C.galeria;
+  const fotosMF = (MF.fotos && MF.fotos.length ? MF.fotos : [G.fotos[0] && G.fotos[0].img, G.fotos[1] && G.fotos[1].img].filter(Boolean));
+  const reservas = H.chips.map(c => c.img);
+  const f1 = fotosMF[0] || reservas[1] || reservas[0], f2 = fotosMF[1] || reservas[2] || reservas[0];
+  $("mf-f1").innerHTML = img(f1, G.titulo, 900, 1100);
+  $("mf-f2").innerHTML = img(f2, G.titulo, 600, 600);
+  $("mf-vert").textContent = (C.faixa[0] || C.nome);
+
+  $("g-titulo").textContent = G.titulo; $("g-texto").textContent = G.texto;
+  $("g-lista").innerHTML = G.fotos.map((fo, i) => `<figure class="${fo.img ? "duo" : ""}" data-i="${i}">${foto(fo.img, fo.legenda, 800, 1000)}</figure>`).join("");
+
+  const M = C.modalidades;
+  /* textos de apoio que mudam por nicho (opcionais): dica do carrossel e rótulo dos chips do hero */
+  if (M.dica) $("m-dica").textContent = M.dica;
+  $("h-chips").setAttribute("aria-label", H.chipsRotulo || M.titulo);
+  $("m-titulo").textContent = M.titulo;
+  if (usouTextoModalidades) $("m-texto").remove(); else $("m-texto").textContent = M.texto;
+  if (M.aviso) $("m-aviso").textContent = M.aviso; else $("m-aviso").remove();
+  $("m-lista").innerHTML = M.itens.map((m, i) => `<div class="inclina"><article class="card"><span class="brilho"></span><span class="num">${String(i + 1).padStart(2, "0")}</span>
+      <div class="foto">${foto(m.img, m.legendaFoto || m.nome, 800, 533)}</div>
+      <div class="bd"><span class="marca-cor"></span><h3>${esc(m.nome)}</h3><div class="pub">${esc(m.publico)}</div><p>${esc(m.desc)}</p>
+      <ul>${m.horarios.map(h => `<li>${esc(h)}</li>`).join("")}</ul></div></article></div>`).join("");
+
+  const P = C.planos;
+  $("p-titulo").textContent = P.titulo; $("p-texto").textContent = P.texto;
+  if (P.aviso) $("p-aviso").textContent = P.aviso; else $("p-aviso").remove(); $("p-rod").textContent = P.rodape;
+  $("p-lista").innerHTML = P.itens.map(p => `<div class="plano toque${p.destaque ? " dest" : ""}">${p.destaque ? `<span class="tag">${esc(p.destaque)}</span>` : ""}
+      <h3>${esc(p.nome)}</h3><div class="preco">${esc(p.preco)}</div><div class="per">${esc(p.periodo)}</div>
+      <ul>${p.inclui.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");
+
+  const PR = C.professor;
+  $("pr-titulo").textContent = PR.titulo;
+  $("pr-foto").innerHTML = foto(PR.foto, PR.legendaFoto, 800, 1000);
+  $("pr-texto").innerHTML = `<h3>${esc(PR.nome)}</h3><div class="cargo">${esc(PR.cargo)}</div><p>${esc(PR.texto)}</p>
+    <dl>${PR.fatos.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
+
+  const K = C.contato;
+  $("c-titulo").textContent = K.titulo;
+  $("c-info").innerHTML = `<a class="end" href="${MAPS}" target="_blank" rel="noopener">${esc(K.endereco)}</a>${K.referencia ? `<p class="ref">${esc(K.referencia)}</p>` : ""}${K.google ? `<p class="google">${esc(K.google)}</p>` : ""}
+    <div class="horas">${K.horario.map(([d,h]) => `<div><span>${esc(d)}</span><b>${esc(h)}</b></div>`).join("")}</div>`;
+  const mapSrc = C.mapsEmbed || `https://www.google.com/maps?q=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}&z=15&output=embed`;
+  $("c-mapa").innerHTML = `<iframe src="${esc(mapSrc)}" loading="lazy" title="Mapa"></iframe>`;
+  $("c-faq").innerHTML = `<h3>${esc(K.faqTitulo)}</h3>` + K.faq.map(q => `<details><summary>${esc(q.p)}</summary><p>${esc(q.r)}</p></details>`).join("");
+  $("rodape").textContent = C.rodape;
+
+  const I = {
+    wa:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 .1 5.3.1 11.9c0 2.1.5 4.2 1.6 6L0 24l6.3-1.6c1.8 1 3.8 1.5 5.7 1.5 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.5z"/></svg>',
+    tel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+    menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>'
+  };
+  document.querySelectorAll("svg[data-i]").forEach(s => s.outerHTML = I[s.dataset.i]);
+  document.querySelectorAll(".js-wa").forEach(a => a.href = WA);
+  document.querySelectorAll(".js-tel").forEach(a => a.href = TEL);
+  if (C.semTelefone) { document.querySelectorAll(".js-tel").forEach(a => a.remove()); $("barra").style.gridTemplateColumns = "1fr"; }
+
+  const hdr = $("hdr");
+  const atualizaHdr = () => hdr.classList.toggle("solido", scrollY > 40);
+  addEventListener("scroll", atualizaHdr, { passive: true }); atualizaHdr();
+
+  const abre = v => document.body.classList.toggle("menu-aberto", v);
+  $("abrir-menu").onclick = () => abre(true);
+  $("fechar-menu").onclick = $("veu").onclick = () => abre(false);
+  $("menu-mob").addEventListener("click", e => { if (e.target.closest("a")) abre(false); });
+
+  document.querySelectorAll(".toque").forEach(el => {
+    el.addEventListener("touchstart", () => el.classList.add("tocado"), { passive: true });
+    ["touchend", "touchcancel"].forEach(ev => el.addEventListener(ev, () => setTimeout(() => el.classList.remove("tocado"), 250), { passive: true }));
+  });
+  document.querySelectorAll(".faq details").forEach(d => d.addEventListener("toggle", () => {
+    if (d.open) document.querySelectorAll(".faq details").forEach(o => o !== d && (o.open = false));
+  }));
+
+  const lb = $("lb"), lbc = $("lb-c");
+  let lenis = null;
+  const abreFoto = i => { const g = G.fotos[i]; lbc.innerHTML = g.img ? img(g.img, g.legenda, 1200, 1500, true, "100vw") : ph(g.legenda); $("lb-leg").textContent = g.legenda; lb.classList.add("on"); document.body.style.overflow = "hidden"; lenis && lenis.stop(); };
+  const fechaFoto = () => { lb.classList.remove("on"); lbc.style.transform = ""; lbc.style.opacity = ""; document.body.style.overflow = ""; lenis && lenis.start(); };
+  $("g-lista").addEventListener("click", e => { const fig = e.target.closest("figure"); if (fig) abreFoto(+fig.dataset.i); });
+  $("lb-x").onclick = fechaFoto;
+  addEventListener("keydown", e => { if (e.key === "Escape") { fechaFoto(); abre(false); } });
+  let y0 = null;
+  lb.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; }, { passive: true });
+  lb.addEventListener("touchmove", e => { if (y0 === null) return; const dy = Math.max(0, e.touches[0].clientY - y0); lbc.style.transform = `translateY(${dy}px)`; lbc.style.opacity = 1 - dy / 400; }, { passive: true });
+  lb.addEventListener("touchend", e => { if (y0 === null) return; const dy = e.changedTouches[0].clientY - y0; y0 = null; if (dy > 90) fechaFoto(); else { lbc.style.transform = ""; lbc.style.opacity = ""; } });
+
+  /* trilho da jornada: muda quando o meio da tela entra na seção (funciona sem GSAP) */
+  const ioJ = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) trilhoJ(+e.target.dataset.e); }), { rootMargin: "-50% 0px -50% 0px" });
+  etapas.forEach(el => ioJ.observe(el));
+
+  /* ---------- animação ---------- */
+  const reduzido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const temGsap = window.gsap && window.ScrollTrigger;
+  if (reduzido || !temGsap) {
+    if (!reduzido) {
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+      document.querySelectorAll(".rv").forEach(el => io.observe(el));
+    }
+    return;
+  }
+  document.documentElement.classList.add("anima");
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  const mouse = matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+  /* rolagem suave só com mouse (no dedo fica a rolagem nativa do celular) */
+  if (mouse && window.Lenis) {
+    lenis = new Lenis({ lerp: .1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    document.addEventListener("click", e => {
+      const a = e.target.closest('a[href^="#"]'); if (!a) return;
+      const alvo = a.getAttribute("href") === "#topo" ? 0 : document.querySelector(a.getAttribute("href"));
+      if (alvo === null) return;
+      e.preventDefault(); lenis.scrollTo(alvo, { offset: alvo === 0 ? 0 : -54 });
+    });
+  }
+
+  /* hero: letras sobem, resto entra depois; ao rolar a foto cresce e o texto afunda */
+  gsap.from("#h1 .lw", { yPercent: 115, rotate: 6, duration: 1.1, ease: "power4.out", stagger: .03, delay: .2 });
+  gsap.from(".hero-sub > *, #h-marca", { y: 24, opacity: 0, duration: .9, ease: "power3.out", stagger: .1, delay: .8 });
+  gsap.to(".hero-foto", { scale: 1.12, yPercent: 8, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  gsap.to(".hero-conteudo", { yPercent: -18, opacity: .2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+  /* ORDEM IMPORTA: primeiro as seções que travam (pin), depois o que revela. Gatilho criado antes de um pin
+     calcula a posição sem o espaço que o pin acrescenta e dispara cedo demais (as tiras de baixo já apareciam prontas). */
+
+  /* manifesto fixo: palavras acendem, foto 1 sobe por máscara, foto 2 entra de lado */
+  const tl = gsap.timeline({ scrollTrigger: { trigger: "#mf-pin", start: "top top", end: () => "+=" + (innerWidth < 980 ? 90 : 140) + "%", scrub: .5, pin: true, anticipatePin: 1 } });
+  tl.to("#mf-texto .pal", { opacity: 1, stagger: .05, ease: "none", duration: .3 }, 0)
+    .fromTo("#mf-f1", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "power2.out", duration: 1.4 }, .1)
+    .fromTo("#mf-f1 img", { scale: 1.35, yPercent: 10 }, { scale: 1.05, yPercent: -4, ease: "none", duration: 2.6 }, 0)
+    .fromTo("#mf-f2", { clipPath: "inset(0% 100% 0% 0%)", yPercent: 40 }, { clipPath: "inset(0% 0% 0% 0%)", yPercent: -25, ease: "none", duration: 2.4 }, .5);
+
+  /* computador: modalidades andam pro lado com a seção fixa; cards inclinam com o mouse */
+  const mm = gsap.matchMedia();
+  mm.add("(min-width: 980px)", () => {
+    const sec = $("horarios"), tr = $("h-trilho"), lista = $("m-lista");
+    sec.classList.add("horiz");
+    lista.classList.remove("trilho"); lista.style.display = "contents";
+    tr.classList.remove("wrap");
+    const dist = () => Math.max(0, tr.scrollWidth - innerWidth);
+    let anim = null;
+    if (dist() > 40) anim = gsap.to(tr, { x: () => -dist(), ease: "none", scrollTrigger: { trigger: sec.querySelector(".h-pin"), start: "top top", end: () => "+=" + dist(), scrub: .6, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
+    return () => { anim && anim.scrollTrigger.kill(); anim && anim.kill(); gsap.set(tr, { x: 0 }); sec.classList.remove("horiz"); lista.classList.add("trilho"); lista.style.display = ""; tr.classList.add("wrap"); };
+  });
+
+  /* daqui pra baixo: o que revela (criado depois dos pins, então a posição já conta com eles) */
+  const MASCARA0 = "polygon(0 0, 0 0, -25% 100%, -25% 100%)", MASCARA1 = "polygon(0 0, 125% 0, 100% 100%, -25% 100%)";
+
+  /* tira diagonal varre a tela ao entrar em cada seção */
+  document.querySelectorAll(".corte .tira").forEach(t => gsap.fromTo(t,
+    { clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" },
+    { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", ease: "none", scrollTrigger: { trigger: t.closest(".corte"), start: "top 95%", end: "top 35%", scrub: .6 } }));
+
+  /* títulos de seção sobem de dentro de uma máscara */
+  document.querySelectorAll("h2.tit").forEach(h => {
+    h.innerHTML = h.textContent.split(" ").map(p => `<span class="palavra-h"><span class="lw">${esc(p)}</span></span>`).join(" ");
+    gsap.from(h.querySelectorAll(".lw"), { yPercent: 110, duration: .9, ease: "power4.out", stagger: .06, scrollTrigger: { trigger: h, start: "top 88%" } });
+  });
+  gsap.utils.toArray(".rv:not(.tit)").forEach(el => gsap.from(el, { y: 28, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 90%" } }));
+
+  /* fotos da galeria: entram com máscara diagonal */
+  document.querySelectorAll("#g-lista figure").forEach((fg, i) => gsap.fromTo(fg,
+    { clipPath: MASCARA0 }, { clipPath: MASCARA1, duration: 1.15, delay: (i % 3) * .08, ease: "power3.inOut", scrollTrigger: { trigger: "#g-lista", start: "top 85%" } }));
+
+  /* foto das turmas e do professor: máscara diagonal + zoom que assenta */
+  document.querySelectorAll("#m-lista .card .foto, #pr-foto").forEach(fo => {
+    const st = { trigger: fo, start: "top 88%" };
+    gsap.fromTo(fo, { clipPath: MASCARA0 }, { clipPath: MASCARA1, duration: 1.1, ease: "power3.inOut", scrollTrigger: st });
+    const im = fo.querySelector("img");
+    /* o professor já tem zoom de toque em CSS (transition): animar o img dele travaria, igual ao .letra */
+    if (im && !fo.closest(".toque")) gsap.fromTo(im, { scale: 1.25 }, { scale: 1, duration: 1.6, ease: "power3.out", scrollTrigger: st });
+  });
+  ScrollTrigger.sort();
+
+  /* celular: fotos do hero trocam sozinhas a cada 5 s enquanto o hero está na tela (param no 1º toque num chip) */
+  if (H.chips.length > 1) {
+    const roda = () => { if (scrollY < innerHeight * .6 && !document.hidden) escolhe((atual + 1) % H.chips.length); };
+    giro = setInterval(roda, 5000);
+  }
+
+  /* celular: no carrossel, o card que está na frente fica em destaque e os do lado diminuem */
+  const foco = tr => {
+    if (innerWidth >= 980 || !tr.classList.contains("trilho")) { [...tr.children].forEach(c => { c.style.transform = ""; c.style.opacity = ""; }); return; }
+    const x0 = tr.getBoundingClientRect().left + 20;
+    [...tr.children].forEach(c => {
+      const d = Math.min(1, Math.abs(c.getBoundingClientRect().left - x0) / c.offsetWidth);
+      c.style.transform = `scale(${(1 - d * .07).toFixed(3)})`; c.style.opacity = (1 - d * .45).toFixed(2);
+    });
+  };
+  document.querySelectorAll(".trilho").forEach(tr => {
+    let pedido = false;
+    tr.addEventListener("scroll", () => { if (pedido) return; pedido = true; requestAnimationFrame(() => { pedido = false; foco(tr); }); }, { passive: true });
+    [...tr.children].forEach(c => c.style.transition = "transform .15s ease-out, opacity .15s ease-out");
+    foco(tr);
+  });
+  addEventListener("resize", () => document.querySelectorAll(".trilho").forEach(foco));
+  if (mouse) document.querySelectorAll(".inclina").forEach(w => {
+    const c = w.querySelector(".card");
+    w.addEventListener("pointermove", e => {
+      const b = w.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+      c.style.transform = `rotateX(${(-y * 18).toFixed(2)}deg) rotateY(${(x * 24).toFixed(2)}deg)`;
+      c.style.setProperty("--bx", ((x + .5) * 100).toFixed(1) + "%");
+    });
+    w.addEventListener("pointerleave", () => { c.style.transform = ""; });
+  });
+
+  const refresh = () => ScrollTrigger.refresh();
+  addEventListener("load", refresh);
+  document.fonts && document.fonts.ready.then(refresh);
+})();
+</script>
+</body>
+</html>
