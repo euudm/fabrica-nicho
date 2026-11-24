@@ -645,7 +645,8 @@ footer{background:var(--escuro);color:#8F8B83;padding:22px 0 28px;font-size:.95r
   $("mf-vert").textContent = (C.faixa[0] || C.nome);
 
   $("g-titulo").textContent = G.titulo; $("g-texto").textContent = G.texto;
-  $("g-lista").innerHTML = G.fotos.map((fo, i) => `<figure class="${fo.img ? "duo" : ""}" data-i="${i}">${foto(fo.img, fo.legenda, 800, 1000)}</figure>`).join("");
+  /* semFiltro: foto que não pode virar duotone (ex.: arte com texto, como os cards do Systema Araújo) */
+  $("g-lista").innerHTML = G.fotos.map((fo, i) => `<figure class="${fo.img && !fo.semFiltro ? "duo" : ""}" data-i="${i}">${foto(fo.img, fo.legenda, 800, 1000)}</figure>`).join("");
 
   const M = C.modalidades;
   /* textos de apoio que mudam por nicho (opcionais): dica do carrossel e rótulo dos chips do hero */
@@ -674,7 +675,9 @@ footer{background:var(--escuro);color:#8F8B83;padding:22px 0 28px;font-size:.95r
 
   const K = C.contato;
   $("c-titulo").textContent = K.titulo;
-  $("c-info").innerHTML = `<a class="end" href="${MAPS}" target="_blank" rel="noopener">${esc(K.endereco)}</a>${K.referencia ? `<p class="ref">${esc(K.referencia)}</p>` : ""}${K.google ? `<p class="google">${esc(K.google)}</p>` : ""}
+  /* contato.link: "whatsapp" (negócio sem endereço fixo) ou uma URL própria; sem ele, abre o Maps */
+  const endHref = K.link === "whatsapp" ? WA : (K.link || MAPS);
+  $("c-info").innerHTML = `<a class="end" href="${endHref}" target="_blank" rel="noopener">${esc(K.endereco)}</a>${K.referencia ? `<p class="ref">${esc(K.referencia)}</p>` : ""}${K.google ? `<p class="google">${esc(K.google)}</p>` : ""}
     <div class="horas">${K.horario.map(([d,h]) => `<div><span>${esc(d)}</span><b>${esc(h)}</b></div>`).join("")}</div>`;
   const mapSrc = C.mapsEmbed || `https://www.google.com/maps?q=${encodeURIComponent(C.endereco + ", " + C.cidade + " " + C.uf)}&z=15&output=embed`;
   $("c-mapa").innerHTML = `<iframe src="${esc(mapSrc)}" loading="lazy" title="Mapa"></iframe>`;
